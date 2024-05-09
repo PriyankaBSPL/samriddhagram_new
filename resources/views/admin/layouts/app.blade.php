@@ -18,7 +18,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{URL::asset('/admin/dist/css/adminlte.min.css')}}">
 </head>
-
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 

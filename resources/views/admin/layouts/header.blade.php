@@ -36,13 +36,11 @@
           </form>
         </div>
       </li>
-
-      <li class="nav-item">
+      <class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
-      </li>
-
+</li>
       <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i> 
@@ -52,7 +50,7 @@
             </div>
         </li>
     </ul>
-
   </nav>
+  
   <!-- /.navbar -->
 
