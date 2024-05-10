@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\SliderController as test;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\SliderController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('slider_add',[SliderController::class,'add'])->name('slider_add');
-Route::get('slider_list',[SliderController::class,'list'])->name('slider_list');
+Route::get('slider_add',[test::class,'add'])->name('slider_add');
+Route::get('slider_list',[tets::class,'list'])->name('slider_list');
+Route::resource('slider',SliderController::class);
 // Route::group(['prefix'=> 'admin'], function(){
     // Route::group(['middleware'=> 'admin'], function(){
         Route::get('/login',[LoginController::class,'index'])->name('login');
