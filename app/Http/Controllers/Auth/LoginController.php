@@ -25,11 +25,11 @@ class LoginController extends Controller
         ]);
 
         if ($validator->passes()) {
-            if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                if(Auth::guard('admin')->user()->role != 2){
-                    Auth::guard('admin')->logout();
-                    return redirect()->route('login')->with('error','You are not authorized to access.');        
-                }
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                // if(Auth::guard('admin')->user()->role != 2){
+                //     Auth::guard('admin')->logout();
+                //     return redirect()->route('login')->with('error','You are not authorized to access.');        
+                // }
                 return redirect()->route('dashboard');
             }else{
                 return redirect()->route('login')->with('error','Either email or password is incorrect.');
