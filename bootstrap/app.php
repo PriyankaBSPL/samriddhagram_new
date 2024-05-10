@@ -1,4 +1,4 @@
-<?php
+z<?php
 
 use App\Http\Middleware\AdminRedirect;
 use Illuminate\Foundation\Application;

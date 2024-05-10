@@ -28,13 +28,13 @@
                with font-awesome or any other icon font library -->
         
          <li class="nav-item">
-           <a href="{{route('slider_add')}}" class="nav-link">
+           <a href="#" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>Sample Add</p>
            </a>
          </li>
          <li class="nav-item">
-           <a href="{{route('slider_list')}}" class="nav-link">
+           <a href="#" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>Sample List</p>
            </a>
