@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin'], function () {
      });
 });
 
-Route::resource('/menu',MenuController::class);
+Route::resource('/admin/menu',MenuController::class);
 // Route::group(['prefix'=> 'admin'], function(){
     // Route::group(['middleware'=> 'admin'], function(){
         Route::get('/login',[LoginController::class,'index'])->name('login');

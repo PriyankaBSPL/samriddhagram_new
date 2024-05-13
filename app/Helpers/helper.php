@@ -119,8 +119,8 @@ if (!function_exists('clean_single_input')) {
 	}
 
 }
-if ( ! function_exists('primary_category')){
-	function primary_category( $cat_id='')
+if ( ! function_exists('primary_menu')){
+	function primary_menu( $cat_id='')
 	{
 		$selected = "";
 		if($cat_id != '')
@@ -178,7 +178,7 @@ if ( ! function_exists('cat_build_child_one'))
 					$selected="selected";
 			}
 			$tempReturnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>&nbsp;--&nbsp;'.$row->title.'</strong></option>';
-			$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $parent_id);
+			$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $cat_id);
 		}
 
 		return $tempReturnValue;
@@ -203,11 +203,57 @@ if ( ! function_exists('build_child_two'))
 					$selected="selected";
 			}
 			$tempReturnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>&nbsp;---&nbsp;'.$row->title.'</strong></option>';
-			//$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $menu_positions);
+			$tempReturnValue .= build_child_three($row->id, $tempReturnValueAnother='', $cat_id);
 		}
 
 		return $tempReturnValue;
 	}
 }
+if ( ! function_exists('build_child_three'))
+{
+	function build_child_three($parent_id, $tempReturnValue, $cat_id)
+	{
+            
+		$tempReturnValue .= $tempReturnValue;
+		$whEre = array(	
+						'parent_id'			=> $parent_id
+						);
+		$nav_query = DB::table('menus')->select('*')->where($whEre)->get();
+		foreach($nav_query as $row)
+		{
+			$selected = "";
+			if($cat_id != '')
+			{
+				if($row->id == $cat_id)
+					$selected="selected";
+			}
+			$tempReturnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>&nbsp;---&nbsp;'.$row->title.'</strong></option>';
+			//$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $menu_positions);
+		}
 
+		return $tempReturnValue;
+	}
+
+}
+if (!function_exists('check_menu')) {
+	function check_menu($pid)
+	{
+
+		$fetchResult = DB::table('menus')->where('parent_id', $pid)->exists();
+		return $fetchResult;
+
+	}
+}
+if (!function_exists('get_status')) {
+	function get_status()
+	{
+
+		$status = array(
+			'1' => "Draft",
+			'2' => "Approval",
+			'3' => "Publish"
+		);
+		return $status;
+	}
+}
 ?>

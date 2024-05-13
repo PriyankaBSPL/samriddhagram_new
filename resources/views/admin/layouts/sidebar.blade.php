@@ -28,17 +28,17 @@
                with font-awesome or any other icon font library -->
         
          <li class="nav-item">
-           <a href="#" class="nav-link">
+           <a href="{{url('admin/menu')}}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
-             <p>Sample Add</p>
+             <p>Menu</p>
            </a>
          </li>
-         <li class="nav-item">
+         <!-- <li class="nav-item">
            <a href="#" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>Sample List</p>
            </a>
-         </li>
+         </li> -->
        </ul>
      </nav>
      <!-- /.sidebar-menu -->
