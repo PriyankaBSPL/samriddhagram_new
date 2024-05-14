@@ -1,7 +1,6 @@
 <html lang="en">
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +16,8 @@
     <link rel="stylesheet" href="{{URL::asset('/admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{URL::asset('/admin/dist/css/adminlte.min.css')}}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">

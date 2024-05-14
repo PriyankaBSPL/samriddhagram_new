@@ -24,21 +24,43 @@
      <!-- Sidebar Menu -->
      <nav class="mt-2">
        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
         
          <li class="nav-item">
-           <a href="{{route('slider_add')}}" class="nav-link">
+           <a href="{{url('admin/menu')}}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
-             <p>Sample Add</p>
+             <p>Menu</p>
            </a>
          </li>
+
+
          <li class="nav-item">
-           <a href="{{route('slider_list')}}" class="nav-link">
+           <a href="{{ route('training.index') }}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
-             <p>Sample List</p>
+             <p>Training Calender</p>
            </a>
          </li>
+
+         <li class="nav-item">
+           <a href="{{ route('youtube.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Youtube Link</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{{ route('home_gallery.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Home Gallery</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{{ route('home_intro.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Home Intro</p>
+           </a>
+         </li>
+
        </ul>
      </nav>
      <!-- /.sidebar-menu -->
