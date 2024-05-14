@@ -61,7 +61,7 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Edit</button>
-                                <a href="{{route('home_gallery.index')}}" class="btn btn-primary">Back</a>
+                                <a onclick="history.back()" class="btn btn-primary">Back</a>
                         </form>
                     </div>
                     <!-- /.card -->
