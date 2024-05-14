@@ -33,6 +33,7 @@
          </li>
 
 
+
          <li class="nav-item">
            <a href="{{ route('training.index') }}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
@@ -49,9 +50,14 @@
 
          <li class="nav-item">
            <a href="{{ route('home_gallery.index') }}" class="nav-link">
+
+         <li class="nav-item">
+           <a href="#" class="nav-link">
+
              <i class="nav-icon fas fa-th"></i>
              <p>Home Gallery</p>
            </a>
+
          </li>
 
          <li class="nav-item">
@@ -60,6 +66,8 @@
              <p>Home Intro</p>
            </a>
          </li>
+
+         
 
        </ul>
      </nav>
