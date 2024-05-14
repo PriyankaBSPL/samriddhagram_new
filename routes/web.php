@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\SliderController as test;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\SliderController;
+use App\Http\Controllers\Admin\MenuController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,12 +18,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+       
      });
 });
 
-Route::get('slider_add',[test::class,'add'])->name('slider_add');
-Route::get('slider_list',[tets::class,'list'])->name('slider_list');
-Route::resource('slider',SliderController::class);
+Route::resource('/admin/menu',MenuController::class);
 // Route::group(['prefix'=> 'admin'], function(){
     // Route::group(['middleware'=> 'admin'], function(){
         Route::get('/login',[LoginController::class,'index'])->name('login');

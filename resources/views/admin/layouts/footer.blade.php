@@ -18,3 +18,4 @@
 <script src="{{URL::asset('/admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{URL::asset('/admin/dist/js/adminlte.min.js')}}"></script>
+<script src="{{URL::asset('/admin/dist/js/pages/validate.js')}}"></script>
