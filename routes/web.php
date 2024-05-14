@@ -1,6 +1,5 @@
 <?php
 use App\Models\Admin\HomeGallery;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\SliderController;
@@ -8,7 +7,6 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\HomeIntroController;
-use App\Http\Controllers\Admin\OurPartnerController;
 use App\Http\Controllers\Admin\HomeGalleryController;
 use App\Http\Controllers\Admin\YoutubeLinkController;
 use App\Http\Controllers\Admin\TrainingProgramController;
