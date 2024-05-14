@@ -1,10 +1,6 @@
 <?php
 use App\Models\Admin\HomeGallery;
-<<<<<<< HEAD
-=======
 
-
->>>>>>> e1cf7f5756ac682bee4c6509f81135a3fbe202f2
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\SliderController;
@@ -22,8 +18,6 @@ Route::get('/', [IndexController::class, 'index']);
 
 
 Route::resource('/admin/menu',MenuController::class);
-
-use App\Http\Controllers\Admin\MenuController;
 
 Route::get('/', function () {
     return view('welcome');
