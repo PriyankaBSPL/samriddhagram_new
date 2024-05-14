@@ -18,17 +18,6 @@ use App\Http\Controllers\Admin\MenuController;
 Route::get('/', [IndexController::class, 'index']);
 
 
-// Route::group(['prefix' => 'admin'], function () {
-//     // Routes accessible only when authenticated as admin
-//       Route::group(['middleware' => ['AdminAuthenticate']], function () {
-//         Route::get('/login', [LoginController::class, 'index'])->name('login');
-//         Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
-//         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-//         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-       
-//      });
-// });
-
 Route::resource('/admin/menu',MenuController::class);
 
 // Route::group(['prefix'=> 'admin'], function(){
