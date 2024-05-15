@@ -51,9 +51,9 @@ class YoutubeLinkController extends Controller
             $result = $youtube->save();
 
             if ($result) {
-                return redirect('youtube')->with('success','Youtube link detail added successfully!');
+                return redirect('admin/youtube')->with('success','Youtube link detail added successfully!');
             } else {
-                return redirect('youtube/create')->with('error','Youtube link detail not added successfully!');
+                return redirect('admin/youtube/create')->with('error','Youtube link detail not added successfully!');
             }
         } else {
             return redirect()->route('youtube.create')->withInput()->withErrors($validator);
@@ -95,7 +95,7 @@ class YoutubeLinkController extends Controller
 
             $youtube = YoutubeLink::find($id);
             if (!$youtube) {
-                return redirect('youtube')->withError('Youtube Link calender detail not found.');
+                return redirect('admin/youtube')->withError('Youtube Link calender detail not found.');
             }
             $youtube->title = $request->title;
             $youtube->youtube_link = $request->youtube_link;
@@ -103,9 +103,9 @@ class YoutubeLinkController extends Controller
             $result = $youtube->save();
 
             if ($result) {
-                return redirect('youtube')->with('success','Youtube Link detail updated successfully!');
+                return redirect('admin/youtube')->with('success','Youtube Link detail updated successfully!');
             } else {
-                return redirect('youtube/edit')->with('error','Youtube Link detail not updated successfully!');
+                return redirect('admin/youtube/edit')->with('error','Youtube Link detail not updated successfully!');
             }
         } else {
             return redirect()->route('youtube.edit')->withInput()->withErrors($validator);
@@ -122,15 +122,15 @@ class YoutubeLinkController extends Controller
 
         // dd($notification);
         if (!$youtube) {
-            return redirect('youtube')->withError('Youtube link detail not found.');
+            return redirect('admin/youtube')->withError('Youtube link detail not found.');
         }
 
         $result = $youtube->delete();
 
         if ($result) {
-            return redirect('youtube')->with('success','Youtube link detail deleted successfully!');
+            return redirect('admin/youtube')->with('success','Youtube link detail deleted successfully!');
         } else {
-            return redirect('youtube')->with('error','Youtube link detail not deleted successfully!');
+            return redirect('admin/youtube')->with('error','Youtube link detail not deleted successfully!');
         }
     }
 }

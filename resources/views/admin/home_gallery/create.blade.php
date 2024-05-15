@@ -56,8 +56,8 @@
                                     <span class="text-danger">@error('image'){{$message}}@enderror</span>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Create</button>
-                                <a href="{{route('home_gallery.index')}}" class="btn btn-primary">Back</a>
+                                <button type="submit" class="btn btn-primary">Create</button>                             
+                                <a onclick="history.back()" class="btn btn-primary">Back</a>
                         </form>
                     </div>
                     <!-- /.card -->

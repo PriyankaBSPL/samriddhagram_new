@@ -61,12 +61,19 @@
 
                                 <div class="form-group">
                                     <label for="right_image">Right Image</label>
-                                    <input type="file" name="right_image" class="form/-control @error('right_image') is-invalid @enderror" value="{{ old('right_image', $home_intros->right_image) }}" id="right_image">
+                                    <input type="file" name="right_image" class="form-control @error('right_image') is-invalid @enderror" value="{{ old('right_image', $home_intros->right_image) }}" id="right_image">
                                     @if($home_intros->right_image)
                                     <a href="{{ URL::asset('/admin/upload/HomeIntro/RightImage/'.$home_intros->right_image)}}"><img src="{{ URL::asset('/admin/upload/HomeIntro/RightImage/'.$home_intros->right_image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;"></a>
                                     @endif
                                     <input type="hidden" name="oldimage" class="input_class w-50 inline-block" value="{{ !empty($home_intros->right_image)?$home_intros->right_image:old('right_image')}}" />
                                     <span class="text-danger">@error('right_image'){{$message}}@enderror</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="right_url">Right URL</label>
+                                    <span style="color:red;" class="star">*</span>
+                                    <input type="text" name="right_url" class="form-control" id="right_url" value="{{ old('right_url', $home_intros->right_url) }}">
+                                    <span class="text-danger">@error('right_url'){{$message}}@enderror</span>
                                 </div>
 
 

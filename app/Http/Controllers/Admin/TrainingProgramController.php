@@ -57,9 +57,9 @@ class TrainingProgramController extends Controller
             $result = $training->save();
 
             if ($result) {
-                return redirect('training')->with('success','Training calender detail added successfully!');
+                return redirect('admin/training')->with('success','Training calender detail added successfully!');
             } else {
-                return redirect('training/create')->with('error','Training calender detail not added successfully!');
+                return redirect('admin/training/create')->with('error','Training calender detail not added successfully!');
             }
         } else {
             return redirect()->route('training.create')->withInput()->withErrors($validator);
@@ -114,9 +114,9 @@ class TrainingProgramController extends Controller
             $result = $training->save();
 
             if ($result) {
-                return redirect('training')->with('success','Training calender detail updated successfully!');
+                return redirect('admin/training')->with('success','Training calender detail updated successfully!');
             } else {
-                return redirect('training/edit')->with('error','Training calender detail not updated successfully!');
+                return redirect('admin/training/edit')->with('error','Training calender detail not updated successfully!');
             }
         } else {
             return redirect()->route('training.edit')->withInput()->withErrors($validator);
@@ -133,15 +133,15 @@ class TrainingProgramController extends Controller
 
         // dd($notification);
         if (!$training) {
-            return redirect('training')->withError('Training calender detail not found.');
+            return redirect('admin/training')->withError('Training calender detail not found.');
         }
 
         $result = $training->delete();
 
         if ($result) {
-            return redirect('training')->with('success','Training calender detail deleted successfully!');
+            return redirect('admin/training')->with('success','Training calender detail deleted successfully!');
         } else {
-            return redirect('training')->with('error','Training calender detail not deleted successfully!');
+            return redirect('admin/training')->with('error','Training calender detail not deleted successfully!');
         }
     }
 }

@@ -75,9 +75,9 @@ class HomeIntroController extends Controller
             $result = $home_intro->save();
 
             if ($result) {
-                return redirect('home_intro')->with('success', 'Home intro detail added successfully!');
+                return redirect('admin/home_intro')->with('success', 'Home intro detail added successfully!');
             } else {
-                return redirect('home_intro/create')->with('error', 'Home intro detail not added successfully!');
+                return redirect('admin/home_intro/create')->with('error', 'Home intro detail not added successfully!');
             }
         } else {
             return redirect()->route('home_intro.create')->withInput()->withErrors($validator);
@@ -117,11 +117,11 @@ class HomeIntroController extends Controller
             'right_url' => 'required|url',
         ]);
 
-        if ($validator->passes()) {
+         if ($validator->passes()) {
 
             $home_intro = HomeIntro::find($id);
             if (!$home_intro) {
-                return redirect('home_intro')->withError('Home Intro detail not found.');
+                return redirect('admin/home_intro')->withError('Home Intro detail not found.');
             }
 
             $home_intro->description = $request->description;
@@ -130,8 +130,8 @@ class HomeIntroController extends Controller
 
             if (isset($request->left_image)) {
                 $newleftimage = time() . '.' . $request->left_image->extension();
-                $request->left_image->move(public_path('/admin/upload/HomeIntro/LeftImage'), $newleftimage);
-                $leftimagedestination = public_path('/admin/upload/HomeIntro/LeftImage') . $home_intro->left_image;
+                $request->left_image->move(public_path('/admin/upload/HomeIntro/LeftImage/'), $newleftimage);
+                $leftimagedestination = public_path('/admin/upload/HomeIntro/LeftImage/') . $home_intro->left_image;
                 if (file_exists($leftimagedestination) && is_file($leftimagedestination)) {
                     unlink($leftimagedestination);
                 }
@@ -140,8 +140,8 @@ class HomeIntroController extends Controller
 
             if (isset($request->right_image)) {
                 $newrightimage = time() . '.' . $request->right_image->extension();
-                $request->right_image->move(public_path('/admin/upload/HomeIntro/RightImage'), $newrightimage);
-                $rightimagedestination = public_path('/admin/upload/HomeIntro/RightImage') . $home_intro->right_image;
+                $request->right_image->move(public_path('/admin/upload/HomeIntro/RightImage/'), $newrightimage);
+                $rightimagedestination = public_path('/admin/upload/HomeIntro/RightImage/') . $home_intro->right_image;
                 if (file_exists($rightimagedestination) && is_file($rightimagedestination)) {
                     unlink($rightimagedestination);
                 }
@@ -151,9 +151,9 @@ class HomeIntroController extends Controller
             $result = $home_intro->save();
 
             if ($result) {
-                return redirect('home_intro')->with('success', 'Home Intro detail updated successfully!');
+                return redirect('admin/home_intro')->with('success', 'Home Intro detail updated successfully!');
             } else {
-                return redirect('home_intro/edit')->with('error', 'Home Intro detail not updated successfully!');
+                return redirect('admin/home_intro/edit')->with('error', 'Home Intro detail not updated successfully!');
             }
         } else {
             return redirect()->route('home_intro.edit')->withInput()->withErrors($validator);
@@ -170,25 +170,25 @@ class HomeIntroController extends Controller
 
         // dd($notification);
         if (!$home_intro) {
-            return redirect('home_intro')->withError('Home Intro detail not found.');
+            return redirect('admin/home_intro')->withError('Home Intro detail not found.');
         }
 
-        $OldLeftImagePath = public_path('/admin/upload/HomeIntro/LeftImage') . $home_intro->left_image;
+        $OldLeftImagePath = public_path('/admin/upload/HomeIntro/LeftImage/') . $home_intro->left_image;
         if (file_exists($OldLeftImagePath) && is_file($OldLeftImagePath)) {
             unlink($OldLeftImagePath);
         }
 
-        $OldRightImagePath = public_path('/admin/upload/HomeIntro/RightImage') . $home_intro->right_image;
+        $OldRightImagePath = public_path('/admin/upload/HomeIntro/RightImage/') . $home_intro->right_image;
         if (file_exists($OldRightImagePath) && is_file($OldRightImagePath)) {
             unlink($OldRightImagePath);
         }
 
         $result = $home_intro->delete();
 
-        if ($home_intro) {
-            return redirect('home_intro')->with('success', 'Home Intro detail deleted successfully!');
+        if ($result) {
+            return redirect('admin/home_intro')->with('success', 'Home Intro detail deleted successfully!');
         } else {
-            return redirect('home_intro')->with('error', 'Home Intro detail not deleted successfully!');
+            return redirect('admin/home_intro')->with('error', 'Home Intro detail not deleted successfully!');
         }
     }
 }

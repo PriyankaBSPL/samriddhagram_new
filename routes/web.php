@@ -30,17 +30,22 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::resource('/admin/menu',MenuController::class);
 
-// Route::group(['prefix'=> 'admin'], function(){
+ Route::group(['prefix'=> 'admin'], function(){
     // Route::group(['middleware'=> 'admin'], function(){
         Route::get('/login',[LoginController::class,'index'])->name('login');
         Route::post('/authenticate',[LoginController::class,'authenticate'])->name('authenticate');
         Route::get('/logout',[LoginController::class,'logout'])->name('logout');
         Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
     // });
-// });
-
-
+    
 Route::resource('/training', TrainingProgramController::class);
 Route::resource('/youtube', YoutubeLinkController::class);
 Route::resource('/home_gallery', HomeGalleryController::class);
 Route::resource('/home_intro', HomeIntroController::class);
+ });
+
+
+// Route::resource('/training', TrainingProgramController::class);
+// Route::resource('/youtube', YoutubeLinkController::class);
+// Route::resource('/home_gallery', HomeGalleryController::class);
+// Route::resource('/home_intro', HomeIntroController::class);

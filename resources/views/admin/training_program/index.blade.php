@@ -67,12 +67,10 @@
                                         <td>{{$training->beneficiaries}}</td>
                                         <td>
                                             <a href="{{ route('training.edit', $training->id) }}" class="btn btn-primary">Edit</a>
-                                            <!-- <a href="{{ route('training.destroy', $training->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this training program?')">Delete</a> -->
                                             <form action="{{ route('training.destroy',$training->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this training program?')">Delete</button>
-                                                <!-- <a href="{{ route('training.destroy', $training->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this training program?')">Delete</a> -->
                                             </form>
                                         </td>
                                     </tr>
