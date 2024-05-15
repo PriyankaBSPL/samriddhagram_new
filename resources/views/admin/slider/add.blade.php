@@ -40,7 +40,7 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
                     <span style="color: red;" class="star">*</span>
-                    <textarea name="welcomedescription" maxlength="120" autocomplete="off" class="input_class form-control @error('welcomedescription') is-invalid @enderror  summernote-simple">{{old('welcomedescription')}}</textarea>
+                    <textarea id="summernote" class="summernote"></textarea>
                     @if($errors->has('welcomedescription'))
                     <span class="text-danger">{{ $errors->first('welcomedescription') }}</span>
                     @endif
@@ -88,12 +88,13 @@
     </section>
     <!-- /.content -->
     
-<script>
-    <link rel="stylesheet" 
-          href="/src/summernote-0.8.18-dist/summernote-bs4.min.css" /> 
-    <script src="/src/summernote-0.8.18-dist/summernote-bs4.min.js"></script> 
-    <link rel="stylesheet" 
-          href="/src/summernote-0.8.18-dist/summernote.css" /> 
-    <script src="/src/summernote-0.8.18-dist/summernote.js"></script> 
+
+    
+   
+
+     <script type="text/javascript">
+      $(document).ready(function() {
+  $('.summernote').summernote();
+});
     </script>
 @endsection
