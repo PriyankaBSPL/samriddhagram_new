@@ -35,7 +35,6 @@ class HomeGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validator = Validator::make($request->all(), [
             'type' => 'required',
             'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
