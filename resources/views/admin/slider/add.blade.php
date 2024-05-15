@@ -2,77 +2,98 @@
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">Slider</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Slider</li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
-          <!-- general form elements -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Slider Add</h3>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{{$title}}</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">{{$title}}</li>
+                    </ol>
+                </div>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form>
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        </div> <!--/.container-fluid  -->
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="{{URL::to('/admin/slider')}}" method="post" enctype="multipart/form-data" >
+              @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <span style="color: red;" class="star">*</span>
+                    <input type="text" class="form-control" name="title"  placeholder="Enter Title">
+                    <span class="text-danger"> @error('title'){{$message}} @enderror</span>
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Description</label>
+                    <span style="color: red;" class="star">*</span>
+                    <textarea name="welcomedescription" maxlength="120" autocomplete="off" class="input_class form-control @error('welcomedescription') is-invalid @enderror  summernote-simple">{{old('welcomedescription')}}</textarea>
+                    @if($errors->has('welcomedescription'))
+                    <span class="text-danger">{{ $errors->first('welcomedescription') }}</span>
+                    @endif
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Select Status</label>
+                    <select name="status" class="input_class form-control" id="status" autocomplete="off">
+                                    <option value=""> Select </option>
+                                        <?php
+                                        $statusArray = get_status();
+                                        foreach($statusArray as $key=>$value) {
+                                            ?>
+                                            <option value="<?php echo $key; ?>" <?php if(old('status')==$key) echo "selected"; ?>><?php echo $value; ?></option>
+                                        <?php  }?>
+                                </select>
+                                        @if($errors->has('status'))
+                                        <span class="text-danger">{{ $errors->first('status') }}</span>
+                                        @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Logo</label>
+                    <input type="file" class="form-control" id="thumbnail_img"  name="logo" onchange="maxfilesize(this)"> 
+                    <span class="thumbnail_img_error" style="color:red;"></span>
+                  </div>
+                
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Image</label>
-                  <input type="file" class="form-control" id="image" placeholder="Password">
-                </div>
+                <!-- /.card-body -->
 
-              </div>
-              <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Create</button>
+                  <a onclick="history.back()" class="btn btn-primary">Back</a>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
 
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+             
 
           </div>
-          <!-- /.card-body -->
-
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-          </form>
+       
         </div>
-        <!-- /.card -->
-
-
-
-      </div>
-
-    </div>
-    <!-- /.row -->
-</div><!-- /.container-fluid -->
-</section>
-<!-- /.content -->
-</div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    
+<script>
+    <link rel="stylesheet" 
+          href="/src/summernote-0.8.18-dist/summernote-bs4.min.css" /> 
+    <script src="/src/summernote-0.8.18-dist/summernote-bs4.min.js"></script> 
+    <link rel="stylesheet" 
+          href="/src/summernote-0.8.18-dist/summernote.css" /> 
+    <script src="/src/summernote-0.8.18-dist/summernote.js"></script> 
+    </script>
 @endsection
