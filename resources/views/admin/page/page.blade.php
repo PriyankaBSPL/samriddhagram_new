@@ -28,6 +28,7 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
+                            
                             @if(Session::has('success'))
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                             @endif
@@ -37,40 +38,41 @@
                             @endif
 
                             <div class="float-right mb-3">
-                                <a href="{{ route('training.create') }}" class="btn btn-success">Add Training Program</a>
+                                <a href="{{ route('page.create') }}" class="btn btn-success">Add Page</a>
                             </div>
 
-                            <table id="traingcalender" name="traingcalender" class="table table-bordered table-hover">
+                            <table id="pagetable" name="pagetable" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>Sr.No.</th>
-                                        <th>Start Data</th>
-                                        <th>End date</th>
-                                        <th>Title</th>
-                                        <th>Duration</th>
-                                        <th>Target Beneficiaries</th>
+                                        <th>Page Title</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($trainings) > 0)
+                                    @if(count($pages) > 0)
                                     @php
                                     $count = 1;
                                     @endphp
-                                    @foreach($trainings as $training)
+                                    @foreach($pages as $page)
                                     <tr>
                                         <td>{{ $count }}</td>
-                                        <td>{{$training->startdate}}</td>
-                                        <td>{{$training->enddate}}</td>
-                                        <td>{{$training->title}}</td>
-                                        <td>{{$training->duration}}</td>
-                                        <td>{{$training->beneficiaries}}</td>
+                                        <td>{{ $page->page_title }}</td>
+                                        <td>{{strip_tags(html_entity_decode($page->description))}}</td>
+                                        <td> @if(!empty($page->image))
+                                            <a href="{{ URL::asset('/admin/upload/Page/'.$page->image) }}" target="_blank">
+                                                <img src="{{ URL::asset('/admin/upload/Page/'.$page->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                            </a>
+                                            @endif
+                                        </td>
                                         <td>
-                                            <a href="{{ route('training.edit', $training->id) }}" class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('training.destroy',$training->id) }}" method="POST">
+                                            <a href="{{ route('page.edit', $page->id) }}" class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('page.destroy',$page->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this training program?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this page?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -99,7 +101,7 @@
 
 <script>
     $(document).ready(function() {
-        new DataTable('#traingcalender');
+        new DataTable('#pagetable');
     });
 </script>
 @endsection
