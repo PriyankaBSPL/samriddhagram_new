@@ -12,9 +12,14 @@ use App\Http\Controllers\Admin\HomeIntroController;
 use App\Http\Controllers\Admin\HomeGalleryController;
 use App\Http\Controllers\Admin\YoutubeLinkController;
 use App\Http\Controllers\Admin\TrainingProgramController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\GalleryController;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::resource('/admin/slider', SliderController::class);
+Route::resource('/admin/category',CategoryController::class);
+Route::resource('/admin/gallery',GalleryController::class);
+
 
 
 Route::resource('/admin/menu', MenuController::class);

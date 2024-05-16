@@ -45,6 +45,7 @@
                     <th>Sr.No.</th>
                     <th>Title</th>
                     <th>View</th>
+                    <th>Type</th>
                     <!-- <th>Order</th> -->
                     <th>Banner Image</th>
                     <th>Action</th>
@@ -65,6 +66,11 @@
                 _____
                 @endif
                 </td> 
+                <td>
+                
+                {{$row->type}}
+              
+                </td>
                 <!-- <td>{{$row->position}}</td> -->
                 <td>
                                                 @if(!empty($row->banner_image))

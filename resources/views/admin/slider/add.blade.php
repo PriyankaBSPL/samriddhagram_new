@@ -29,12 +29,51 @@
             <!-- form start -->
             <form action="{{URL::to('/admin/slider')}}" method="post" enctype="multipart/form-data">
               @csrf
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Title</label>
-                  <span style="color: red;" class="star">*</span>
-                  <input type="text" class="form-control" name="title" placeholder="Enter Title">
-                  <span class="text-danger"> @error('title'){{$message}} @enderror</span>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <span style="color: red;" class="star">*</span>
+                    <input type="text" class="form-control" name="title"  placeholder="Enter Title">
+                    <span class="text-danger"> @error('title'){{$message}} @enderror</span>
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Description</label>
+                    <span style="color: red;" class="star">*</span>
+                    <textarea id="summernote" name="description" class="summernote"></textarea>
+                    @if($errors->has('description'))
+                    <span class="text-danger">{{ $errors->first('description') }}</span>
+                    @endif
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Select Status</label>
+                    <span style="color: red;" class="star">*</span>
+                    <select name="status" class="input_class form-control" id="status" autocomplete="off">
+                                    <option value=""> Select </option>
+                                        <?php
+                                        $statusArray = get_status();
+                                        foreach($statusArray as $key=>$value) {
+                                            ?>
+                                            <option value="<?php echo $key; ?>" <?php if(old('status')==$key) echo "selected"; ?>><?php echo $value; ?></option>
+                                        <?php  }?>
+                                </select>
+                                        @if($errors->has('status'))
+                                        <span class="text-danger">{{ $errors->first('status') }}</span>
+                                        @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Logo</label>
+                    <span style="color: red;" class="star">*</span>
+                    <input type="file" class="form-control" id="thumbnail_img"  name="logo" onchange="maxfilesize(this)"> 
+                    <span class="thumbnail_img_error" style="color:red;"></span>
+                    @if($errors->has('logo'))
+                                        <span class="text-danger">{{ $errors->first('logo') }}</span>
+                                        @endif
+                  </div>
+                
+
                 </div>
 
                 <div class="form-group">
@@ -88,14 +127,5 @@
     </div><!-- /.container-fluid -->
   </section>
   <!-- /.content -->
+@endsection
 
-
-
-
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.summernote').summernote();
-    });
-  </script>
-  @endsection

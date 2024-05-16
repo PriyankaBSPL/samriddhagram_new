@@ -256,4 +256,11 @@ if (!function_exists('get_status')) {
 		return $status;
 	}
 }
+if (!function_exists('get_types')) {
+	function get_types()
+	{
+		$fetchResult = DB::table('menus')->where('type', 'Gallery')->get();
+		return $fetchResult;
+	}
+}
 ?>

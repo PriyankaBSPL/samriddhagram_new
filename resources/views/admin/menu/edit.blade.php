@@ -71,6 +71,40 @@
                                     @enderror
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">Menu Position</label>
+                    <span style="color: red;" class="star">*</span>
+                  <select name="menu_position" class="input_class form-control" id="menu_position" autocomplete="off">
+                                    <option value="" selected="" disabled=""> Select </option>
+                                    <?php
+                                    $menupositionArray = ["1" => "Header Menu", "2" => "Footer Menu"];
+                                    foreach ($menupositionArray as $key => $value) {
+                                    ?>
+                                      <option value="<?php echo $key; ?>"
+                                    <?php if((!empty($data->menu_position)?$data->menu_position:old('status'))==$key) echo "selected"; ?>>
+                                            <?php echo $value; ?></option>
+                                        
+                                    <?php  } ?>
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                  
+                    <label for="exampleInputEmail1">Select Type</label>
+                    <span style="color: red;" class="star">*</span>
+                  <select name="type" class="input_class form-control" id="type" autocomplete="off">
+
+                                    <option value="" selected="" disabled=""> Select </option>
+                                    <?php
+                                    $Array = ["1" => "Gallery", "2" => "Program","3"=>"Other"];
+                                    foreach ($Array as $key => $value) {
+                                    ?>
+                                      <option value="<?php echo $value; ?>"
+                                     <?php if((!empty($data->type)?$data->type:old('status'))==$key) echo "selected"; ?>>
+                                            <?php echo $value; ?></option>
+                                        
+                                    <?php  } ?>
+                                </select>
+                                </div>
+                  <div class="form-group">
                     <label for="exampleInputPassword1">Banner Image</label>
                     <!-- <input type="file" class="form-control" name="banner_image"> -->
                     <input type="file" value="{{old('banner_image')}}" accept="image/png, image/gif, image/jpeg, image/jpg" name="banner_image" onchange="maxfilesize(this);"  class="input_class w-50 inline-block" id="image" />

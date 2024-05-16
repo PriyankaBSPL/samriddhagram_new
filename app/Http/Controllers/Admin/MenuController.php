@@ -34,9 +34,15 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        // echo "<pre>";
+        // print_r($request->all());
+        // echo "</pre>";
+        // exit;
     $validator= $request->validate([
       'title'=>'required',
-      'parent_id'=>'required'
+      'parent_id'=>'required',
+      'menu_position'=>'required',
+      'type'=>'required'
     ]);
 
     $menu=new Menu;
@@ -44,6 +50,8 @@ class MenuController extends Controller
     $menu->slug=Str::slug((clean_single_input($request->title)));
     $menu->parent_id=$request->parent_id;
     $menu->status=$request->status;
+    $menu->menu_position=$request->menu_position;
+    $menu->type=$request->type;
     if (isset($request->banner_image)) {
         $file = $request->file('banner_image');
         $image = time() . '.' . $file->extension();
@@ -95,6 +103,8 @@ class MenuController extends Controller
           $menu->slug=Str::slug((clean_single_input($request->title)));
           $menu->parent_id=$request->parent_id;
           $menu->status=$request->status;
+          $menu->menu_position=$request->menu_position;
+          $menu->type=$request->type;
           if (isset($request->banner_image)) {
             $newimage = time() . '.' . $request->banner_image->extension();
             $request->banner_image->move(public_path('admin/uploads/banner_image'), $newimage);
