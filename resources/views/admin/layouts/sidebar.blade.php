@@ -67,10 +67,17 @@
              <p>Slider</p>
            </a>
          </li>
+
          <li class="nav-item">
            <a href="{{ route('category.index')}}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>Category</p>
+
+         <li class="nav-item">
+           <a href="{{ route('page.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Page</p>
+
            </a>
          </li>
          
