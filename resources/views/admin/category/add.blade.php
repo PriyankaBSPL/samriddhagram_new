@@ -27,38 +27,26 @@
               
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('slider.update',$data->id)}}" method="post" enctype="multipart/form-data" >
+              <form action="{{URL::to('/admin/category')}}" method="post" enctype="multipart/form-data" >
               @csrf
-              @method('PUT')
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
                     <span style="color: red;" class="star">*</span>
-                    <input type="text" class="form-control" name="title"  placeholder="Enter Title" value="{{$data->title}}">
+                    <input type="text" class="form-control" name="title"  placeholder="Enter Title">
                     <span class="text-danger"> @error('title'){{$message}} @enderror</span>
                   </div>
-                 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Description</label>
-                    <span style="color: red;" class="star">*</span>
-                    <textarea id="summernote" name="description" class="summernote">{{$data->description}}</textarea>
-                    @if($errors->has('description'))
-                    <span class="text-danger">{{ $errors->first('description') }}</span>
-                    @endif
-                  </div>
-                 
+  
                   <div class="form-group">
                     <label for="exampleInputEmail1">Select Status</label>
                     <span style="color: red;" class="star">*</span>
                     <select name="status" class="input_class form-control" id="status" autocomplete="off">
                                     <option value=""> Select </option>
-                                    <?php
+                                        <?php
                                         $statusArray = get_status();
                                         foreach($statusArray as $key=>$value) {
                                             ?>
-                                        <option value="<?php echo $key; ?>"
-                                            <?php if((!empty($data->status)?$data->status:old('status'))==$key) echo "selected"; ?>>
-                                            <?php echo $value; ?></option>
+                                            <option value="<?php echo $key; ?>" <?php if(old('status')==$key) echo "selected"; ?>><?php echo $value; ?></option>
                                         <?php  }?>
                                 </select>
                                         @if($errors->has('status'))
@@ -66,26 +54,37 @@
                                         @endif
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Logo</label>
+                    <label for="exampleInputEmail1">Select Type</label>
                     <span style="color: red;" class="star">*</span>
-                    <input type="file" class="form-control" id="thumbnail_img"  name="logo" onchange="maxfilesize(this)"> 
-                    @if($data->logo)
-                            <img src="{{ URL::asset('/admin/uploads/slider_logo/'.$data->logo)}}"
-                                style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
-                                    @endif
-                    <input type="hidden" name="olduplode" class="input_class w-50 inline-block" value="<?php echo !empty($data->logo)?$data->logo:''; ?>" />
-                    <span class="thumbnail_img_error" style="color:red;"></span>
-                    @if($errors->has('logo'))
-                                        <span class="text-danger">{{ $errors->first('logo') }}</span>
+                    <select name="type" class="input_class form-control" id="status" autocomplete="off">
+                                    <option value=""> Select </option>
+                                   
+                                        <?php
+                                        $typeArray = get_types();
+                                        foreach($typeArray as $value) {
+                                            ?>
+                                            <option value="<?php echo $value->id; ?>" <?php if(old('status')==$value->title) echo "selected"; ?>><?php echo $value->title; ?></option>
+                                        <?php  }?>
+                                </select>
+                                
+                                        @if($errors->has('type'))
+                                        <span class="text-danger">{{ $errors->first('type') }}</span>
                                         @endif
                   </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Multiple Image</label>
+                    <span style="color: red;" class="star">*</span>
+                    <input type="file" class="form-control" id="thumbnail_img"  name="image[]" multiple onchange="multiple_maxfilesize(this)"> 
+                    <span class="thumbnail_img_error" style="color:red;"></span>
+                   
                 
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
-                 
+                  <button type="submit" class="btn btn-primary">Create</button>
+                  <a onclick="history.back()" class="btn btn-primary">Back</a>
                 </div>
               </form>
             </div>

@@ -5,20 +5,13 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Gallery extends Model
 {
     use HasFactory;
-    
     protected $fillable=[
         'id',
-        'slug',
+        'cat_id',
         'title',
-        'parent_id',
-        'banner_image',
-        'position',
-        'status',
-        'menu_position',
-        'type'
+        'status'
     ];
-
 }

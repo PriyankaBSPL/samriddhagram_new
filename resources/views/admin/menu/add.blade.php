@@ -61,6 +61,39 @@
                                         <span class="text-danger">{{ $errors->first('status') }}</span>
                                         @endif
                   </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Menu Position</label>
+                    <span style="color: red;" class="star">*</span>
+                  <select name="menu_position" class="input_class form-control" id="menu_position" autocomplete="off">
+                                    <option value="" selected="" disabled=""> Select </option>
+                                    <?php
+                                    $menupositionArray = ["1" => "Header Menu", "2" => "Footer Menu"];
+                                    foreach ($menupositionArray as $key => $value) {
+                                    ?>
+                                        <option value="{{ $key }}"><?php if(old('menu_position')==$key) echo "selected"?>{{ $value }}</option>
+                                    <?php  } ?>
+                                </select>
+                                @if($errors->has('menu_position'))
+                                        <span class="text-danger">{{ $errors->first('menu_position') }}</span>
+                                        @endif
+                                </div>
+                                <div class="form-group">
+                    <label for="exampleInputEmail1">Select Type</label>
+                    <span style="color: red;" class="star">*</span>
+                  <select name="type" class="input_class form-control" id="type" autocomplete="off">
+                                    <option value="" selected="" disabled=""> Select </option>
+                                    <?php
+                                    $Array = ["1" => "Gallery", "2" => "Program","3"=>"Other"];
+                                    foreach ($Array as $key => $value) {
+                                    ?>
+                                        <option value="{{ $value }}"><?php if(old('type')==$key) echo "selected"?>{{ $value }}</option>
+                                    <?php  } ?>
+                                </select>
+                                @if($errors->has('type'))
+                                        <span class="text-danger">{{ $errors->first('type') }}</span>
+                                        @endif
+                                </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Banner Image</label>
                     <input type="file" class="form-control" id="thumbnail_img"  name="banner_image" onchange="maxfilesize(this)"> 
