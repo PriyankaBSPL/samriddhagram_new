@@ -36,23 +36,7 @@
                     <input type="text" class="form-control" name="title"  placeholder="Enter Title">
                     <span class="text-danger"> @error('title'){{$message}} @enderror</span>
                   </div>
-  
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Select Status</label>
-                    <span style="color: red;" class="star">*</span>
-                    <select name="status" class="input_class form-control" id="status" autocomplete="off">
-                                    <option value=""> Select </option>
-                                        <?php
-                                        $statusArray = get_status();
-                                        foreach($statusArray as $key=>$value) {
-                                            ?>
-                                            <option value="<?php echo $key; ?>" <?php if(old('status')==$key) echo "selected"; ?>><?php echo $value; ?></option>
-                                        <?php  }?>
-                                </select>
-                                        @if($errors->has('status'))
-                                        <span class="text-danger">{{ $errors->first('status') }}</span>
-                                        @endif
-                  </div>
+
                   <div class="form-group">
                     <label for="exampleInputEmail1">Select Type</label>
                     <span style="color: red;" class="star">*</span>
@@ -71,7 +55,22 @@
                                         <span class="text-danger">{{ $errors->first('type') }}</span>
                                         @endif
                   </div>
-
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Select Status</label>
+                    <span style="color: red;" class="star">*</span>
+                    <select name="status" class="input_class form-control" id="status" autocomplete="off">
+                                    <option value=""> Select </option>
+                                        <?php
+                                        $statusArray = get_status();
+                                        foreach($statusArray as $key=>$value) {
+                                            ?>
+                                            <option value="<?php echo $key; ?>" <?php if(old('status')==$key) echo "selected"; ?>><?php echo $value; ?></option>
+                                        <?php  }?>
+                                </select>
+                                        @if($errors->has('status'))
+                                        <span class="text-danger">{{ $errors->first('status') }}</span>
+                                        @endif
+                  </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Multiple Image</label>
                     <span style="color: red;" class="star">*</span>

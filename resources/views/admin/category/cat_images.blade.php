@@ -32,44 +32,32 @@
                             <div class="alert alert-danger">{{Session::get('error')}}</div>
                             @endif
                             <div class="float-right mb-3">
-                                <a href="{{ route('category.create') }}" class="btn btn-success">Add Category</a>
+                                <a onclick="history.back()" class="btn btn-success">Back</a>
                             </div>
                             <!-- /.card-header -->
                             <table id="menu_table" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>Sr.No.</th>
-                                        <th>Title</th>
-                                        <th>Type</th>
                                         <th>Images</th>
+                                        <th>View Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if(count($data) > 0)
                                     @php $i=1; @endphp
-                                    <?php 
-                                    foreach ($data as $row)
-                                     {
-                                        $get_menu_data=get_menu_name($row->type);
-                                        
-                                        ?>
+                                    @foreach ($data as $row)
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>{{$row->title}}</td>
-                                        <td>{{$get_menu_data->menu_name}}</td>
                                         <td>
-                                            @if(check_category_image($row->id))
-                                            <strong><a
-                                                    href="{{route('category.show', $row->id)}}">View</a></strong><br />
-                                            @else
-                                            _____
-                                            @endif
+                                        <img src="{{ URL::asset('/admin/uploads/category_image/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                         </td>
+                                            <td><a  target="_blank"  href="{{ URL::asset('/admin/uploads/category_image/'.$row->image)}}" ><i class="fas fa-eye"></i></a></td>
+                                                
+                                                
                                         <form action="{{ route('category.destroy', $row->id) }}" method="POST">
                                             <td>
-                                                <a class="btn btn-primary"
-                                                    href="{{ route('category.edit', $row->id) }}">Edit</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger"
@@ -77,7 +65,7 @@
                                             </td>
                                         </form>
                                     </tr>
-                                 <?php }?>
+                                    @endforeach
                                     @endif
                                 </tbody>
 
