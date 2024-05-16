@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Home Gallery</h1>
+                    <h1>{{$title}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Add Home Gallery</li>
+                        <li class="breadcrumb-item active">{{$title}}</li>
                     </ol>
                 </div>
             </div>
@@ -56,8 +56,9 @@
                                     <span class="text-danger">@error('image'){{$message}}@enderror</span>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Create</button>                             
+                                <button type="submit" class="btn btn-primary">Create</button>
                                 <a onclick="history.back()" class="btn btn-primary">Back</a>
+                            </div>
                         </form>
                     </div>
                     <!-- /.card -->
