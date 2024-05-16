@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $title='Category List';
+        $data=Category::orderBy('id','DESC')->get();
+        return view('admin.category.list',compact('title','data'));
     }
 
     /**
@@ -43,17 +45,22 @@ class CategoryController extends Controller
         $category->type=$request->type;
         $category_result=$category->save();
         $last_id=$category->id;
+       
         if(!empty($request->file('image'))){
             foreach($request->file('image') as $row){
                 $cat_image=  new CategoryImage;
-                $image = time() . '.' . $row->extension();
+                $image = time() . '.' . $row->getClientOriginalName();
                 $row->move(public_path('/admin/uploads/category_image'), $image);
                 $cat_image->image = $image; 
                 $cat_image->cat_id = $last_id;
-              $res= $cat_image->save();
-            
+                $res= $cat_image->save();
             }
         }
+        if($category_result){
+            return redirect('/admin/category')->withSuccess('Category Added Successfully');
+         }else{
+           return redirect('/admin/category')->withEroor('Unable to Add Category');
+         }
     }
 
     /**
@@ -61,7 +68,10 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $id=clean_single_input($id);
+        $title='Catgory Images';
+        $data=CategoryImage::where('cat_id',$id)->get();
+        return view('admin.category.cat_images',compact('title','data'));
     }
 
     /**
@@ -69,7 +79,11 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $id=clean_single_input($id);
+        $title='Edit Category';
+        $data=Category::find($id);
+        return view('admin.category.edit',compact('data','title'));
+
     }
 
     /**
@@ -77,14 +91,33 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'type'=>'required',
+            'title'=>'required',
+            'status'=>'required',
+        ]);
+        $category=Category::find($id);
+        $category->title=$request->title;
+        $category->type=$request->type;
+        $category->status=$request->status;
+        $result=$category->save();
+        if($result){
+            return redirect('/admin/category')->withSuccess('Category Updated Successfully');
+        }else{
+            return redirect('/admin/category')->withEroor('Unable to Update Category');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $result=$category->delete();
+        if($result){
+           return redirect('/admin/category')->withSuccess('Category Deleted Successfully');
+        }else{
+          return redirect('/admin/category')->withEroor('Unable to Delete Category');
+        }
     }
 }

@@ -2,6 +2,8 @@
 use Carbon\Carbon;
 use App\Models\Admin\WebLogs;
 use App\Models\Admin\Menu;
+use App\Models\Admin\CategoryImage;
+use App\Models\Admin\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -260,6 +262,21 @@ if (!function_exists('get_types')) {
 	function get_types()
 	{
 		$fetchResult = DB::table('menus')->where('type', 'Gallery')->get();
+		return $fetchResult;
+	}
+}
+if (!function_exists('check_category_image')) {
+	function check_category_image($sid)
+	{
+		$fetchResult = DB::table('category_images')->where('cat_id', $sid)->exists();
+		return $fetchResult;
+	}
+}
+if (!function_exists('get_menu_name')) {
+	function get_menu_name($type)
+	{
+
+		$fetchResult = DB::table('menus')->select('title as menu_name')->where('id', $type)->first();
 		return $fetchResult;
 	}
 }
