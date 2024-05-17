@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\YoutubeLinkController;
 use App\Http\Controllers\Admin\TrainingProgramController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\AdminController;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::resource('/admin/slider', SliderController::class);
@@ -21,7 +22,8 @@ Route::resource('/admin/category',CategoryController::class);
 Route::resource('/admin/gallery',GalleryController::class);
 
 
-
+Route::any('/category_image/delete/{id}', [AdminController::class,'delete_image']);
+    Route::any('/category_image/update_image/', [AdminController::class,'update_image']);
 Route::resource('/admin/menu', MenuController::class);
 
 Route::group(['prefix' => 'admin'], function () {
