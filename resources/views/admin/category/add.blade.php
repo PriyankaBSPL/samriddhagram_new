@@ -74,6 +74,8 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">Multiple Image</label>
                     <span style="color: red;" class="star">*</span>
+                    <br/>
+                    <span class="star">Maximum 15 images are allowed at a time</span>
                     <input type="file" class="form-control" id="thumbnail_img"  name="image[]" multiple onchange="multiple_maxfilesize(this)"> 
                     <span class="thumbnail_img_error" style="color:red;"></span>
                    
