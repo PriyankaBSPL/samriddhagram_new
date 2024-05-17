@@ -5,13 +5,19 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PageDetail extends Model
+class Program extends Model
 {
     use HasFactory;
-    protected $table = 'page_details';
+    protected $table = 'programs';
 
     protected $fillable =
     [
+        'sector_type',
         'page_title',
+        'design_type',
+        'full_description',
+        'top_description',
+        'side_description',
+        'image',
     ];
 }

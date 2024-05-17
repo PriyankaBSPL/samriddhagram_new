@@ -28,7 +28,7 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            
+
                             @if(Session::has('success'))
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                             @endif
@@ -38,41 +38,59 @@
                             @endif
 
                             <div class="float-right mb-3">
-                                <a href="{{ route('page.create') }}" class="btn btn-success">Add Page</a>
+                                <a href="{{ route('program.create') }}" class="btn btn-success">Add Program</a>
                             </div>
 
-                            <table id="pagetable" name="pagetable" class="table table-bordered table-hover">
+                            <table id="programtable" name="programtable" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>Sr.No.</th>
+                                        <th>Sector Type</th>
                                         <th>Page Title</th>
-                                        <th>Description</th>
+                                        <th>Design Type</th>
+                                        <th>Full Description</th>
+                                        <th>Top Description</th>
+                                        <th>Side Description</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($pages) > 0)
+                                    @if(count($programs) > 0)
                                     @php
                                     $count = 1;
                                     @endphp
-                                    @foreach($pages as $page)
+                                    @foreach($programs as $program)
                                     <tr>
                                         <td>{{ $count }}</td>
-                                        <td>{{ $page->page_title }}</td>
-                                        <td>{{strip_tags(html_entity_decode($page->description))}}</td>
-                                        <td> @if(!empty($page->image))
-                                            <a href="{{ URL::asset('/admin/upload/Page/'.$page->image) }}" target="_blank">
-                                                <img src="{{ URL::asset('/admin/upload/Page/'.$page->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
+                                        <td>@if ($program->sector_type == 1)Farm Sector @else Non-Farm Sector @endif</td>
+                                        <!-- <td>{{ $program->page_title }}</td> -->
+                                        <td>
+                                            @foreach($SelectPage as $id => $title)
+                                            @if($id == $program->page_title)
+                                            {{ $title }}
+                                            @endif
+                                            @endforeach
+                                        </td>
+                                        <td>@if ($program->design_type == 1)Description @else Description & Image @endif</td>
+                                        <td>{{ \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($program->full_description)), 50) }} </td>
+                                        <td>{{ \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($program->top_description)), 50) }} </td>
+                                        <td>{{ \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($program->side_description)), 50) }} </td>
+                                        <!-- <td>{{strip_tags(html_entity_decode($program->full_description))}}</td> -->
+                                        <!-- <td>{{strip_tags(html_entity_decode($program->top_description))}}</td>
+                                        <td>{{strip_tags(html_entity_decode($program->side_description))}}</td> -->
+                                        <td> @if(!empty($program->image))
+                                            <a href="{{ URL::asset('/admin/upload/Program/'.$program->image) }}" target="_blank">
+                                                <img src="{{ URL::asset('/admin/upload/Program/'.$program->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                             </a>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('page.edit', $page->id) }}" class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('page.destroy',$page->id) }}" method="POST">
+                                            <a href="{{ route('program.edit', $program->id) }}" class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('program.destroy',$program->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this page?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this program?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -101,7 +119,8 @@
 
 <script>
     $(document).ready(function() {
-        new DataTable('#pagetable');
+        new DataTable('#programtable');
     });
 </script>
+
 @endsection

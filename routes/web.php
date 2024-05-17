@@ -3,17 +3,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeIntroController;
 use App\Http\Controllers\Admin\HomeGalleryController;
 use App\Http\Controllers\Admin\YoutubeLinkController;
 use App\Http\Controllers\Admin\TrainingProgramController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\GalleryController;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::resource('/admin/slider', SliderController::class);
@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/youtube', YoutubeLinkController::class);
     Route::resource('/home_gallery', HomeGalleryController::class);
     Route::resource('/home_intro', HomeIntroController::class);
-    Route::resource('/page', PageController::class);
+    Route::resource('/program', ProgramController::class);
 });
 
 
