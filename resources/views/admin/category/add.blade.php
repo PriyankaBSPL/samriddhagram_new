@@ -78,6 +78,52 @@
                   <span class="thumbnail_img_error" style="color:red;"></span>
 
 
+<<<<<<< HEAD
+=======
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Select Type</label>
+                    <span style="color: red;" class="star">*</span>
+                    <select name="type" class="input_class form-control" id="status" autocomplete="off">
+                                    <option value=""> Select </option>
+                                   
+                                        <?php
+                                        $typeArray = get_types();
+                                        foreach($typeArray as $value) {
+                                            ?>
+                                            <option value="<?php echo $value->id; ?>" <?php if(old('status')==$value->title) echo "selected"; ?>><?php echo $value->title; ?></option>
+                                        <?php  }?>
+                                </select>
+                                
+                                        @if($errors->has('type'))
+                                        <span class="text-danger">{{ $errors->first('type') }}</span>
+                                        @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Select Status</label>
+                    <span style="color: red;" class="star">*</span>
+                    <select name="status" class="input_class form-control" id="status" autocomplete="off">
+                                    <option value=""> Select </option>
+                                        <?php
+                                        $statusArray = get_status();
+                                        foreach($statusArray as $key=>$value) {
+                                            ?>
+                                            <option value="<?php echo $key; ?>" <?php if(old('status')==$key) echo "selected"; ?>><?php echo $value; ?></option>
+                                        <?php  }?>
+                                </select>
+                                        @if($errors->has('status'))
+                                        <span class="text-danger">{{ $errors->first('status') }}</span>
+                                        @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Multiple Image</label>
+                    <span style="color: red;" class="star">*</span>
+                    <br/>
+                    <span class="star">Maximum 15 images are allowed at a time</span>
+                    <input type="file" class="form-control" id="thumbnail_img"  name="image[]" multiple onchange="multiple_maxfilesize(this)"> 
+                    <span class="thumbnail_img_error" style="color:red;"></span>
+                   
+                
+>>>>>>> 644117bef0b050b8963663dd0ec6bd2868acd15f
                 </div>
                 <!-- /.card-body -->
 

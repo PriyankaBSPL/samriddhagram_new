@@ -119,7 +119,7 @@ class TrainingProgramController extends Controller
                 return redirect('admin/training/edit')->with('error','Training calender detail not updated successfully!');
             }
         } else {
-            return redirect()->route('training.edit')->withInput()->withErrors($validator);
+            return redirect()->route('training.edit', $id)->withInput()->withErrors($validator);
         }
     }
 

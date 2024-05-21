@@ -156,7 +156,7 @@ class HomeIntroController extends Controller
                 return redirect('admin/home_intro/edit')->with('error', 'Home Intro detail not updated successfully!');
             }
         } else {
-            return redirect()->route('home_intro.edit')->withInput()->withErrors($validator);
+            return redirect()->route('home_intro.edit', $id)->withInput()->withErrors($validator);
         }
     }
 

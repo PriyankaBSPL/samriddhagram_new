@@ -41,6 +41,7 @@
                                         <th>Sr.No.</th>
                                         <th>Images</th>
                                         <th>View Image</th>
+                                        <th>Update Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -55,14 +56,20 @@
                                         </td>
                                             <td><a  target="_blank"  href="{{ URL::asset('/admin/uploads/category_image/'.$row->image)}}" ><i class="fas fa-eye"></i></a></td>
                                                 
-                                                
-                                        <form action="{{ route('category.destroy', $row->id) }}" method="POST">
                                             <td>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Are you sure want to delete this category?')">Delete</button>
+                                                <!-- Add form for updating image -->
+                                                <form id="updateImageForm" action="{{ url('/category_image/update_image/') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf          
+                                                    <input type="file" id="thumbnail_img" name="new_image" accept="image/*" onchange="maxfilesize(this)">
+                                                    <input type="hidden" name="image_id" value="{{$row->id}}">
+                                                    <span class="thumbnail_img_error" style="color:red;"></span>
+                                                    <button type="submit" class="btn btn-primary">Update Image</button>
+                                                </form>
                                             </td>
+                                            <td> 
+                                            <a  class="btn btn-danger" href="{{url('category_image/delete/'.$row->id)}}"
+                                                        onclick="return confirm('Are you sure want to delete image?')"><i class="fas fa-trash-alt" style="font-size: 15px;"></i></a>
+                                                 </td>
                                         </form>
                                     </tr>
                                     @endforeach

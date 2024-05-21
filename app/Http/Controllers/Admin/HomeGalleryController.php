@@ -61,7 +61,7 @@ class HomeGalleryController extends Controller
             if ($result) {
                 return redirect('admin/home_gallery')->with('success', 'Home gallery detail added successfully!');
             } else {
-                return redirect('admin/home_gallery/create')->with('error', 'Home Gallery detail not added successfully!');
+                return redirect('admin/home_gallery/create')->with('error', 'Home gallery detail not added successfully!');
             }
         } else {
             return redirect()->route('home_gallery.create')->withInput()->withErrors($validator);
@@ -102,7 +102,7 @@ class HomeGalleryController extends Controller
 
             $home_gallery = HomeGallery::find($id);
             if (!$home_gallery) {
-                return redirect('admin/home_gallery')->withError('Home Gallery detail not found.');
+                return redirect('admin/home_gallery')->withError('Home gallery detail not found.');
             }
 
             $home_gallery->type = $request->type;
@@ -120,12 +120,12 @@ class HomeGalleryController extends Controller
             $result = $home_gallery->save();
 
             if ($result) {
-                return redirect('admin/home_gallery')->with('success', 'Home Gallery detail updated successfully!');
+                return redirect('admin/home_gallery')->with('success', 'Home gallery detail updated successfully!');
             } else {
-                return redirect('admin/home_gallery/edit')->with('error', 'Home Gallery detail not updated successfully!');
+                return redirect('admin/home_gallery/edit')->with('error', 'Home gallery detail not updated successfully!');
             }
         } else {
-            return redirect()->route('home_gallery.edit')->withInput()->withErrors($validator);
+            return redirect()->route('home_gallery.edit', $id)->withInput()->withErrors($validator);
         }
     }
 
@@ -139,7 +139,7 @@ class HomeGalleryController extends Controller
 
         // dd($notification);
         if (!$home_gallery) {
-            return redirect('admin/home_gallery')->withError('Home Gallery detail not found.');
+            return redirect('admin/home_gallery')->withError('Home gallery detail not found.');
         }
 
         $oldImagePath = public_path('/admin/upload/HomeGallery/') . $home_gallery->image;
@@ -149,10 +149,10 @@ class HomeGalleryController extends Controller
 
         $result = $home_gallery->delete();
 
-        if ($home_gallery) {
-            return redirect('admin/home_gallery')->with('success', 'Home Gallery detail deleted successfully!');
+        if ($result) {
+            return redirect('admin/home_gallery')->with('success', 'Home gallery detail deleted successfully!');
         } else {
-            return redirect('admin/home_gallery')->with('error', 'Home Gallery detail not deleted successfully!');
+            return redirect('admin/home_gallery')->with('error', 'Home gallery detail not deleted successfully!');
         }
     }
 }

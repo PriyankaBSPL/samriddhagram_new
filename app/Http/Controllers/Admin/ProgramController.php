@@ -197,7 +197,7 @@ class ProgramController extends Controller
                 return redirect('admin/program/edit')->with('error', 'Program detail not updated successfully!');
             }
         } else {
-            return redirect()->route('program.edit')->withInput()->withErrors($validator);
+            return redirect()->route('program.edit', $id)->withInput()->withErrors($validator);
         }
     }
 

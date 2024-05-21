@@ -44,7 +44,7 @@
                                 <thead>
                                     <tr>
                                         <th>Sr.No.</th>
-                                        <th>Iamge</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

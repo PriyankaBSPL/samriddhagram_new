@@ -24,7 +24,7 @@
      <!-- Sidebar Menu -->
      <nav class="mt-2">
        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        
+
          <li class="nav-item">
            <a href="{{url('admin/menu')}}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
@@ -62,6 +62,20 @@
          </li>
 
          <li class="nav-item">
+           <a href="{{ route('latest_training.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Latest Training</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{{ route('latest_training_image.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Latest Training Image</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
            <a href="{{ route('slider.index') }}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>Slider</p>
@@ -79,6 +93,13 @@
            <a href="{{ route('program.index') }}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>Program</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{{ route('home_banner.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Home Banner</p>
            </a>
          </li>
 

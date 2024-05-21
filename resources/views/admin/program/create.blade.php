@@ -107,12 +107,10 @@
                                         <label for="top_description">Top Description</label>
                                         <span style="color: red;" class="star">*</span>
                                         <textarea id="summernote" class="summernote" name="top_description">{{ old('top_description') }}</textarea>
-
                                     </div>
 
                                     <div class="form-group">
                                         <label for="description">Side Description</label>
-                                        <span style="color: red;" class="star">*</span>
                                         <textarea id="summernote" class="summernote" name="side_description">{{ old('side_description') }}</textarea>
                                         <span class="text-danger">@error('side_descriptions'){{ $message }}@enderror</span>
                                     </div>

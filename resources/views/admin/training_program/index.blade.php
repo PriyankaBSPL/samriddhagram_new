@@ -44,7 +44,7 @@
                                 <thead>
                                     <tr>
                                         <th>Sr.No.</th>
-                                        <th>Start Data</th>
+                                        <th>Start Date</th>
                                         <th>End date</th>
                                         <th>Title</th>
                                         <th>Duration</th>
