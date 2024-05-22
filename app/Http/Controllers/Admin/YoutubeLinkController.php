@@ -108,7 +108,7 @@ class YoutubeLinkController extends Controller
                 return redirect('admin/youtube/edit')->with('error','Youtube Link detail not updated successfully!');
             }
         } else {
-            return redirect()->route('youtube.edit')->withInput()->withErrors($validator);
+            return redirect()->route('youtube.edit', $id)->withInput()->withErrors($validator);
         }
     }
 

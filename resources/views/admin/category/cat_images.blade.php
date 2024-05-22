@@ -59,8 +59,7 @@
                                             <td>
                                                 <!-- Add form for updating image -->
                                                 <form id="updateImageForm" action="{{ url('/category_image/update_image/') }}" method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                   
+                                                    @csrf          
                                                     <input type="file" id="thumbnail_img" name="new_image" accept="image/*" onchange="maxfilesize(this)">
                                                     <input type="hidden" name="image_id" value="{{$row->id}}">
                                                     <span class="thumbnail_img_error" style="color:red;"></span>

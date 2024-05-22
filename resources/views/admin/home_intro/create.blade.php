@@ -34,13 +34,6 @@
                             @csrf
                             <div class="card-body">
 
-                                <!-- <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <span style="color: red;" class="star">*</span>
-                                    <textarea name="description" class="form-control" id="description">{{ old('description') }}</textarea>
-                                    <span class="text-danger">@error('description'){{$message}}@enderror</span>
-                                </div> -->
-
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <span style="color: red;" class="star">*</span>
