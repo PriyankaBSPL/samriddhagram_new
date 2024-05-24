@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Models\Admin\CategoryImage;
-
+use App\Models\Admin\Gallery;
+use App\Models\Admin\GalleryImage;
 class AdminController extends Controller
 {
     public function delete_image($id){
@@ -49,4 +50,34 @@ public function update_image(Request $request)
     // Return success response
     return redirect()->back()->withSuccess('Image updated Successfully!!!');
 }
+public function add_image(Request $request){
+    $category_id = $request->category_id;
+    $success = false;
+    if ($request->hasFile('image')) {
+        foreach ($request->file('image') as $row) {
+            $category_image = new CategoryImage;
+            $image = time() . '.' . $row->getClientOriginalName();
+            if ($row->move(public_path('/admin/uploads/category_image'), $image)) {
+                // Set the image and category ID on the model
+                $category_image->image = $image; 
+                $category_image->cat_id = $category_id; 
+                // Save the model to the database
+                $result = $category_image->save();
+                // If any of the saves are successful, we consider it a success
+                if ($result) {
+                    $success = true;
+                }
+            }
+        }
+        // Return the appropriate response based on the success flag
+        if ($success) {
+            return redirect()->back()->withSuccess('Image Added Successfully');
+        } else {
+            return redirect()->back()->withError('Unable to Add Image');
+        }
+    } else {
+        return redirect()->back()->withError('No images were uploaded.');
+    } 
+}
+
 }
