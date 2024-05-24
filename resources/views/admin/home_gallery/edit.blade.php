@@ -41,7 +41,7 @@
                                     <select name="type" id="type" class="form-control">
                                         <option value="" selected disabled>Select type</option>
                                         @php
-                                        $SelectTypeArray = ["1" => "Programs And Training", "2" => "Voice Of Samriddha Gram", "3" => "OurPartners"];
+                                        $SelectTypeArray = ["1" => "Voice Of Samriddha Gram", "2" => "Our Partners"];
                                         @endphp
                                         @foreach($SelectTypeArray as $key => $row)
                                         <option value="{{ $key }}" @if((!empty($home_galleries->type)?$home_galleries->type:old('type'))==$key)selected @endif >{{ $row }}</option>

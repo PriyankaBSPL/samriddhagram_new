@@ -32,6 +32,26 @@
            </a>
          </li>
 
+         <li class="nav-item">
+           <a href="{{ route('home_banner.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Home Banner</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{{ route('home_intro.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Home Intro</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{{ route('program_and_training.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>Program And Training</p>
+           </a>
+         </li>
 
          <li class="nav-item">
            <a href="{{ route('training.index') }}" class="nav-link">
@@ -54,12 +74,7 @@
            </a>
          </li>
 
-         <li class="nav-item">
-           <a href="{{ route('home_intro.index') }}" class="nav-link">
-             <i class="nav-icon fas fa-th"></i>
-             <p>Home Intro</p>
-           </a>
-         </li>
+         
 
          <li class="nav-item">
            <a href="{{ route('latest_training.index') }}" class="nav-link">
@@ -96,10 +111,19 @@
            </a>
          </li>
 
+        
+
          <li class="nav-item">
-           <a href="{{ route('home_banner.index') }}" class="nav-link">
+           <a href="{{ route('about.index') }}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
-             <p>Home Banner</p>
+             <p>About Us</p>
+           </a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{{ route('state_page.index') }}" class="nav-link">
+             <i class="nav-icon fas fa-th"></i>
+             <p>State Page</p>
            </a>
          </li>
 
