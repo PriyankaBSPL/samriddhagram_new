@@ -25,7 +25,10 @@ Route::resource('/admin/gallery',GalleryController::class);
 
 
 Route::any('/category_image/delete/{id}', [AdminController::class,'delete_image']);
-    Route::any('/category_image/update_image/', [AdminController::class,'update_image']);
+Route::any('/category_image/update_image/', [AdminController::class,'update_image']);
+Route::any('/category_image/add_image/', [AdminController::class,'add_image']);
+//Route::any('/category_image/add_gallery_image/', [AdminController::class,'add_gallery_image']);
+
 Route::resource('/admin/menu', MenuController::class);
 
 Route::group(['prefix' => 'admin'], function () {

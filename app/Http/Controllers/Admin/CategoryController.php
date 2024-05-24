@@ -71,7 +71,7 @@ class CategoryController extends Controller
         $id=clean_single_input($id);
         $title='Catgory Images';
         $data=CategoryImage::where('cat_id',$id)->get();
-        return view('admin.category.cat_images',compact('title','data'));
+        return view('admin.category.cat_images',compact('title','data','id'));
     }
 
     /**

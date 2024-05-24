@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Galley_Image extends Model
+class GalleryImage extends Model
 {
     use HasFactory;
     protected $fillable=[
