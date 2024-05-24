@@ -37,6 +37,8 @@
                                     <tr>
                                         <th>Sr.No.</th>
                                         <th>Title</th>
+                                        <th>Catgeory Name</th>
+                                        <th>Gallery type</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -49,7 +51,9 @@
                                         ?>
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>{{$row->title}}</td>
+                                        <td>{{$row->gallery_name}}</td>
+                                        <td>{{$row->category_name}}</td>
+                                        <td>{{$row->menu_name}}</td>
                                         <form action="{{ route('gallery.destroy', $row->id) }}" method="POST">
                                             <td>
                                                 <a class="btn btn-primary"
@@ -83,5 +87,6 @@
 $(document).ready(function() {
     new DataTable('#menu_table');
 });
+
 </script>
 @endsection

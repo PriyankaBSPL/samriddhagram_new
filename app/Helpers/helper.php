@@ -4,6 +4,8 @@ use App\Models\Admin\WebLogs;
 use App\Models\Admin\Menu;
 use App\Models\Admin\CategoryImage;
 use App\Models\Admin\Category;
+use App\Models\Admin\GalleryImage;
+use App\Models\Admin\Gallery;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -281,4 +283,20 @@ if (!function_exists('get_menu_name')) {
 	}
 }
 
+// if (!function_exists('get_category_name')) {
+// 	function get_category_name($cat_id)
+// 	{
+// 		$fetchResult = DB::table('categories')->select('title')->where('id', $cat_id)->first();
+// 		return $fetchResult;
+// 	}
+// }
+
+// if (!function_exists('get_gallerytype_name')) {
+// 	function get_gallerytype_name($gallery_id)
+// 	{
+
+// 		$fetchResult = DB::table('galleries')->select('title')->where('id', $gallery_id)->first();
+// 		return $fetchResult;
+// 	}
+// }
 ?>
