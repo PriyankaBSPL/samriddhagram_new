@@ -79,5 +79,35 @@ public function add_image(Request $request){
         return redirect()->back()->withError('No images were uploaded.');
     } 
 }
+public function delete_gallery_images(Request $request)
+{
 
+    $data=explode(',',$request->rowid); 
+     $imgname=$data[0];
+     $geid=$data[1];
+    // print_r($geid);exit;
+     $data = GalleryImage::where('id', $geid)->select('image')->first();
+     $olddata= explode(",",$data->image);
+     if (($key = array_search($imgname, $olddata)) !== false) {
+        unset($olddata[$key]);
+    }
+     $inputdata= implode(",",$olddata);
+     $pArray['image']  	= !empty($inputdata)?$inputdata:'';
+     $res= GalleryImage::where('id', $geid)->update($pArray);
+     $imguplode1 ='/public/admin/uploads/gallery_image/'.$imgname;
+    
+     
+      
+                 if (file_exists($imguplode1)) {
+                     unlink($imgname);
+                 }
+     if(!empty($res)){
+        $newdata = GalleryImage::where('id', $geid)->select('image')->first();
+        echo json_encode( $newdata);
+     }else{
+        $error="Some error";
+     }
+     GalleryImage::where('id',  $geid)->delete();
+   die();
+}
 }

@@ -53,10 +53,8 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr class="warning">
-                                    <!-- <th>Title</th> -->
                                     <th>Sr.No.</th>
                                     <th>Images</th>
-                                    <!-- <th>Order</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,27 +66,18 @@
                                     $i=1;
                                    foreach($gimg as $val)
                                 {
-
                                 ?>
                                     <tr>
                                         <td><?=$i++?></td>
-                                        <!-- <td><?php echo $val->title; ?></td> -->
                                         <td> 
-                                            <img src="{{ URL::asset('/public/admin/upload/photoGallery/photo/'.$val->img)}}"
+                                            <img src="{{ URL::asset('/admin/uploads/gallery_image/'.$val->image)}}"
                                                     style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                                     <input class="form-control" name="oldid[]" value="{{$val->id}} " type="hidden">
-                                                    <input class="form-control" name="oldimag[]" value="{{$val->img}} " type="hidden">
+                                                    <input class="form-control" name="oldimag[]" value="{{$val->image}} " type="hidden">
+                                                    <meta name="csrf-token" content="{{ csrf_token() }}">
+
                                         </td>
-                                     <!--   <td><?php echo $val->img_postion??0; ?> <i id="{{$val->id}}" onclick="editimgpos(this);"  class="far editbut fa-edit"></i>
-                                                    <span  id="img_postion_{{$val->id}}" style="display:none" >
-                                                    <input class="w-25" type="number"
-                                                    onchange="savedata(this);" id="{{$val->id}}" name="img_postion" value="" /></span>
-                                                    <p class="text-success" id="success_{{$val->id}}"></p>
-                                               </td>-->
-                                         <td>
-                                            <a class="btn btn-danger delete-row"  onclick="removeImg('{{$val->img}}, <?php echo $val->id; ?>')" href="javascript:void(0);"><i class="bi bi-trash"></i>
-                                                                </a>
-                                                            </td> 
+                        <td><a  class="btn btn-danger delete-row btn btn-danger"  onclick="removeImg('{{$val->image}}, <?php echo $val->id; ?>')" >Delete</a></td>                          
                                     </tr>
                                    <?php 
                                 }
@@ -97,12 +86,32 @@
                             </table>
                             {!! $gimg->withQueryString()->links('pagination::bootstrap-5') !!}
                             </div>
-
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
-                  <a onclick="history.back()" class="btn btn-primary">Back</a>
-                </div>
+                            <div class="row">
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <h6>Maximum 15 image upload at a time</h6>
+                                <a class="btn btn-success add-row" href="javascript:void(0);"> <i class="bi bi-plus-square-fill"></i>add
+                                                                </a>
+                                
+                                </div>
+                             </div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                <input type="file" value="" style="display: none;" multiple name="image[]"  onchange="onlytxtuplodeimage(this);"  class="input_class w-50 imagesnew inline-block" id="txtimage" />
+                                   </div>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-xm-12">
+                                <div class="pull-right">
+                               
+                                    <input name="cmdsubmit" type="submit" class="btn btn-success" id="cmdsubmit" value="Submit" />&nbsp;
+                                   <a href="{{ url('/admin/photoGallery')}}" class="btn btn-primary" >Back</a>
+                                    <input type="hidden" name="random" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
               </form>
             </div>
             <!-- /.card -->
@@ -116,4 +125,47 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <script>
+      
+$(document).ready(function () {
+    $(".add-row").click(function(){
+        $('.imagesnew').toggle();
+    });
+      
+    $('.table-striped').on('click', '.delete-row', function () {
+            $(this).closest('tr').remove();
+    })
+
+
+});
+      function removeImg(img, id){
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    var linkurl = "{{ url('admin/delete_gallery_images/')}}";
+   // alert(linkurl);
+    var imgname=img;
+    
+	$('span.img-removed').remove();
+	$.ajax({
+		'url' : linkurl,
+		'type' : 'POST',
+		'data' : { 'rowid' : imgname},
+         beforeSend:function(){
+                return confirm("Are you sure want to delete image?");
+        },
+		'success' : function(data){
+			var obj = data;
+			if(obj){
+               
+                location.reload();
+			}
+		}
+		
+	});
+	
+}
+      </script>
 @endsection
