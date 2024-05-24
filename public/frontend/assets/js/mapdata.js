@@ -76,7 +76,6 @@ var simplemaps_countrymap_mapdata = {
     link_text: "View Website"
   },
 
-
   state_specific: {
     "1": {
       name: "Andaman And Nicobar",

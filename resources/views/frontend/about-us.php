@@ -65,7 +65,6 @@
 
           <div class="col-lg-5">
             <img src="assets/img/gram-A.webp">
-
           </div>
         </div>
 

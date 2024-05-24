@@ -30,19 +30,39 @@
                     <div class="card card-primary">
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="{{ route('latest_training.update',$latest_trainings->id) }}">
+                        <form method="POST" action="{{ route('about.store') }}" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <div class="card-body">
+
+                                <div class="form-group">
+                                    <label for="banner_description">Banner Description</label>
+                                    <span style="color: red;" class="star">*</span>
+                                    <textarea id="summernote" class="summernote" name="banner_description">{{ old('banner_description') }}</textarea>
+                                    <span class="text-danger">@error('banner_description'){{$message}}@enderror</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="side_description">Side Description</label>
+                                    <span style="color: red;" class="star">*</span>
+                                    <textarea id="summernote" class="summernote" name="side_description">{{ old('side_description') }}</textarea>
+                                    <span class="text-danger">@error('side_description'){{$message}}@enderror</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <span style="color: red;" class="star">*</span>
+                                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}" id="image">
+                                    <span class="text-danger">@error('image'){{$message}}@enderror</span>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <span style="color: red;" class="star">*</span>
-                                    <textarea id="summernote" class="summernote" name="description">{{ old('description',$latest_trainings->description) }}</textarea>
+                                    <textarea id="summernote" class="summernote" name="description">{{ old('description') }}</textarea>
                                     <span class="text-danger">@error('description'){{$message}}@enderror</span>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
                                 <a onclick="history.back()" class="btn btn-primary">Back</a>
                             </div>
                         </form>

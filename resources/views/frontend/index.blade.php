@@ -21,9 +21,9 @@
   <div class="on-load">
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
-          
-          
-             <div class="modal-content">
+
+
+        <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title" id="exampleModalLabel" style="text-align:center;width: 100%;margin-bottom: 10px;">One Day National Workshop on the Occasion of Santatisrijanam</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -31,19 +31,19 @@
           <div class="modal-body" style="height:auto!important;">
             <div class="row">
               <div class="col-md-12">
-  
+
                 <p style="font-size:17px;line-height:27px;">Join us for an enlightening One Day National Workshop organised by the Patanjali Ayurveda College in collaboration with Patanjali Research Foundation and University of Patanjali, Sponsored by Ministry Of AYUSH!
-Embrace the journey of parenthood from the very beginning! Join us for a transformative day at 'SANTATISRIJANAM' – A national workshop on Garbha Sanskar. </p>
- <p style="font-size:17px;line-height:27px;">Let's nurture the future generation with love, wisdom, and positivity. <br/>
-Kindly connect with us to reserve your spot!</p>
- <p style="font-size:17px;line-height:27px;">Registration link:  <a href="https://forms.gle/ao4ZSijidLaLHu2t8" target="_blank">https://forms.gle/ao4ZSijidLaLHu2t8</a></p>
+                  Embrace the journey of parenthood from the very beginning! Join us for a transformative day at 'SANTATISRIJANAM' – A national workshop on Garbha Sanskar. </p>
+                <p style="font-size:17px;line-height:27px;">Let's nurture the future generation with love, wisdom, and positivity. <br />
+                  Kindly connect with us to reserve your spot!</p>
+                <p style="font-size:17px;line-height:27px;">Registration link: <a href="https://forms.gle/ao4ZSijidLaLHu2t8" target="_blank">https://forms.gle/ao4ZSijidLaLHu2t8</a></p>
 
               </div>
-             
+
             </div>
           </div>
         </div>
-          
+
       </div>
     </div>
   </div>
@@ -124,9 +124,11 @@ Kindly connect with us to reserve your spot!</p>
 
   <div class="home-banner">
     <div class="video-wrapper">
+      @foreach($home_banners as $home_banner)
       <video autoplay muted loop playsinline preload="metadata" style="width:100%;">
-        <source src="{{URL::asset('frontend/assets/img/home-banner.mp4')}}" type="video/mp4">
+        <source src="{{URL::asset('/admin/upload/HomeBanner/' .$home_banner->video)}}" type="video/mp4">
       </video>
+      @endforeach
       <div class="container">
         <div class="video-slide">
           <h1>Helping</h1>
@@ -140,32 +142,36 @@ Kindly connect with us to reserve your spot!</p>
   <!-- End Hero -->
   <main id="main">
     <section class="intro">
+      @foreach($home_intros as $home_intro)
       <div class="container">
-
         <div class="row">
           <div class="col-lg-8">
-            <p>Our nation thrives on the prosperity of its villages. </p>
+            <!-- <p>Our nation thrives on the prosperity of its villages. </p>
             <p>India is the home of extensive rural heritage. A place where existence is deeply rooted in the texture of
               its soil, the complexion of its agriculture, and the innocent blush on the face of its people. Samriddha
               Gram envisions saving and supporting this unique identity through its socio-economic development
               activities. </p>
             <p>We empower, enrich and engage the agrarian economy toward new dimensions of endless financial
-              possibilities. </p>
+              possibilities. </p> -->
+
+            <p>{!! $home_intro->description !!}</p>
+
           </div>
           <div class="col-lg-4 intro-ajavika-logo">
             <div class="row">
               <div class="col-lg-6 ajaveika-paragraph">
-                <a href="https://aajeevika.gov.in/" target="_blank">
-                  <img src="{{URL::asset('frontend/assets/img/ajavik-logo.webp')}}" class="natnal-img">
+                <a href="{{$home_intro->left_url}}" target="_blank">
+                  <img src="{{URL::asset('/admin/upload/HomeIntro/LeftImage/' .$home_intro->left_image)}}" class="natnal-img">
                 </a>
               </div>
               <div class="col-lg-6">
-                <a href="https://patanjali.res.in/" target="_blank"><img src="{{URL::asset('frontend/assets/img/prf-logo.webp')}}"></a>
+                <a href="{{$home_intro->right_url}}" target="_blank"><img src="{{URL::asset('/admin/upload/HomeIntro/RightImage/' .$home_intro->right_image)}}"></a>
               </div>
             </div>
           </div>
         </div>
       </div>
+      @endforeach
     </section>
 
 
@@ -270,7 +276,7 @@ Kindly connect with us to reserve your spot!</p>
 
 
 
-   <section class="calendar">
+    <section class="calendar">
       <div class="container">
         <div class="row justify-content-start aos-init aos-animate" data-aos="fade-left">
           <div class="col-lg-3 calnder-column">
@@ -304,7 +310,7 @@ Kindly connect with us to reserve your spot!</p>
               </div>
               <div class="card-text p-2">
                 <h6>Programme Title</h6>
-               <p class="program-details">Aquaculture Training Program Exploring Aquatic Biology, Economics, and Fisheries Traceability System</p>
+                <p class="program-details">Aquaculture Training Program Exploring Aquatic Biology, Economics, and Fisheries Traceability System</p>
                 <h6 class="pt-3 px-0"><i class='bi bi-clock px-1'></i>Duration</h6>
                 <p class="px-3">30 hours</p>
                 <h6 class="pt-3">Target Beneficiaries</h6>
@@ -348,7 +354,7 @@ Kindly connect with us to reserve your spot!</p>
           <div class="voice-slide">
             <div>
               <h3>Bakery Training</h3>
-             <iframe width="100%" height="400" src="https://www.youtube.com/embed/nWhEbeZOQGM" title="From wheat fields to warm pastries, it&#39;s a recipe for rural prosperity! 🌟 | Samriddha Gram |" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe width="100%" height="400" src="https://www.youtube.com/embed/nWhEbeZOQGM" title="From wheat fields to warm pastries, it&#39;s a recipe for rural prosperity! 🌟 | Samriddha Gram |" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div>
               <h3>Bakery Training</h3>
@@ -357,7 +363,7 @@ Kindly connect with us to reserve your spot!</p>
             <div>
               <h3>Beekeeping & Honey Traceability Training</h3>
               <iframe width="100%" height="400" src="https://www.youtube.com/embed/pjvnANtfpAs" title="Ms. Rani Saini shares her transformative experience of Beekeeping Training Program #patanjali" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>           
+            </div>
             <div>
               <h3>Beekeeping & Honey Traceability Training</h3>
               <iframe width="100%" height="400" src="https://www.youtube.com/embed/Q6v8kYfVyOw" title="Unwrap the essential skills and knowledge gained from SAMRIDDHA GRAM&#39;s honey beekeeping training 🍯" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -393,51 +399,31 @@ Kindly connect with us to reserve your spot!</p>
         <div class="container-fluid g-0">
           <div class="gallery-slider swiper">
             <div class="swiper-wrapper align-items-center">
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/assam-farm-training-batch-1.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/assam-farm-training-batch-2.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-farm-training-batch-1.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-farm-training-batch-2.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-non-farm.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/MP-Farm-Training-Batch-1.webp')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/assam-farm-training-batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/assam-farm-training-batch-2.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-farm-training-batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-farm-training-batch-2.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-non-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/MP-Farm-Training-Batch-1.webp')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
 
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/mp-non-farm.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/meghalya-farm-non-farm.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/meghalya-non-farm.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/punjab-farm.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/mp-non-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/meghalya-farm-non-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/meghalya-non-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/punjab-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
 
-              <div class="swiper-slide"><img
-                  src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttrakhand-Beekeeping-honey-Tracebility-Training-gallery-B.webp')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img
-                  src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttrakhand-Beekeeping-honey-Tracebility-Training-gallery-A.webp')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttrakhand-Beekeeping-honey-Tracebility-Training-gallery-B.webp')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttrakhand-Beekeeping-honey-Tracebility-Training-gallery-A.webp')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
 
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/uttrakhand-farm.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/uttrakhand-non-farm.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img
-                  src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttarakhand-Bakery-Training-Batch-1.jpg')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img
-                  src="{{URL::asset('frontend/assets/img/gallery/traditional-eco-art-training/Uttarakhand-Traditional-Eco-art-Training-Batch-1.webp')}}"
-                  data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/uttrakhand-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/uttrakhand-non-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttarakhand-Bakery-Training-Batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/gallery/traditional-eco-art-training/Uttarakhand-Traditional-Eco-art-Training-Batch-1.webp')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
 
         </div>
-
+      </div>
     </section><!-- End About Us Section -->
 
     <!-- ======= Clients Section ======= -->
@@ -488,7 +474,7 @@ Kindly connect with us to reserve your spot!</p>
   <script src='{{URL::asset("frontend/assets/js/ajax_libs_jquery_2.1.3_jquery.min.js")}}'></script>
 
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('.my-slider').slick({
         slidesToShow: 5,
         slidesToScroll: 1,
@@ -498,8 +484,7 @@ Kindly connect with us to reserve your spot!</p>
         infinite: true,
         autoplaySpeed: 2000,
         autoplay: true,
-        responsive: [
-          {
+        responsive: [{
             breakpoint: 991,
             settings: {
               slidesToShow: 3,
@@ -515,9 +500,9 @@ Kindly connect with us to reserve your spot!</p>
       });
     });
   </script>
-  
-   <script>
-    $(document).ready(function () {
+
+  <script>
+    $(document).ready(function() {
       $('.voice-slide').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -527,8 +512,7 @@ Kindly connect with us to reserve your spot!</p>
         infinite: true,
         autoplaySpeed: 2000,
         autoplay: true,
-        responsive: [
-          {
+        responsive: [{
             breakpoint: 991,
             settings: {
               slidesToShow: 1,
@@ -545,9 +529,9 @@ Kindly connect with us to reserve your spot!</p>
     });
   </script>
 
-  
+
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('.my-video').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -557,8 +541,7 @@ Kindly connect with us to reserve your spot!</p>
         infinite: true,
         autoplaySpeed: 5000,
         autoplay: true,
-        responsive: [
-          {
+        responsive: [{
             breakpoint: 991,
             settings: {
               slidesToShow: 1,
@@ -577,7 +560,7 @@ Kindly connect with us to reserve your spot!</p>
 
   <script>
     // Show the modal when the page is loaded
-    window.onload = function () {
+    window.onload = function() {
       var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
         keyboard: false
       });

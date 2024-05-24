@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Auth\LoginController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\Admin\YoutubeLinkController;
 use App\Http\Controllers\Admin\LatestTrainingController;
 use App\Http\Controllers\Admin\TrainingProgramController;
 use App\Http\Controllers\Admin\LatestTrainingImageController;
+use App\Http\Controllers\Admin\ProgramAndTrainingController;
+use App\Http\Controllers\Admin\StatePageController;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::resource('/admin/slider', SliderController::class);
@@ -47,6 +50,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/home_banner', HomeBannerController::class);
     Route::resource('/latest_training', LatestTrainingController::class);
     Route::resource('/latest_training_image', LatestTrainingImageController::class);
+    Route::resource('/about', AboutController::class);
+    Route::resource('/state_page', StatePageController::class);
+    Route::resource('/program_and_training', ProgramAndTrainingController::class);
 });
 
 

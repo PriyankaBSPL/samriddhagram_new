@@ -30,15 +30,33 @@
                     <div class="card card-primary">
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="{{ route('latest_training.store') }}">
+                        <form method="POST" action="{{ route('state_page.store') }}">
                             @csrf
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="state_name">State Name</label>
                                     <span style="color: red;" class="star">*</span>
-                                    <textarea id="summernote" class="summernote" name="description">{{ old('description') }}</textarea>
-                                    <span class="text-danger">@error('description'){{$message}}@enderror</span>
+                                    <input type="text" name="state_name" class="form-control" id="state_name" value="{{old('state_name')}}">
+                                    <span class="text-danger">@error('state_name'){{$message}}@enderror</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="number_of_training">Number Of Training</label>
+                                    <input type="text" name="number_of_training" class="form-control" id="number_of_training" value="{{old('number_of_training')}}">
+                                    <span class="text-danger">@error('number_of_training'){{$message}}@enderror</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="number_of_trainee">Number Of Trainee</label>
+                                    <input type="text" name="number_of_trainee" class="form-control" id="number_of_trainee" value="{{old('number_of_trainee')}}">
+                                    <span class="text-danger">@error('number_of_trainee'){{$message}}@enderror</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="url">URL</label>
+                                    <input type="text" name="url" class="form-control" id="url" placeholder="https://www.xyz.com" value="{{old('url')}}">
+                                    <span class="text-danger">@error('url'){{$message}}@enderror</span>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Create</button>
