@@ -201,10 +201,14 @@
     <section class="program-training">
       <div class="container">
 
-
-
         <div class="d-flex align-items-center program-inr">
-          <div>
+        @foreach($program_and_trainings as $program_and_trainings)
+        <div>
+            <img class="img-fluid" src="{{URL::asset('/admin/upload/ProgramAndTraining/' .$program_and_trainings->image)}}" alt="" />
+            <h5>{{$program_and_trainings->title}}</h5>
+          </div>
+        @endforeach
+          <!-- <div>
             <img class="img-fluid" src="{{URL::asset('frontend/assets/img/program-A.png')}}" alt="" />
             <h5>Krishi Sakhi</h5>
           </div>
@@ -227,7 +231,7 @@
           <div>
             <img class="img-fluid" src="{{URL::asset('frontend/assets/img/program-E.png')}}" alt="" />
             <h5>Enterpreneurship</h5>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -237,7 +241,22 @@
         <div class="row content align-items-center">
           <div class="col-lg-7 training-slide">
             <div class="row">
+              @foreach($latest_training_images as $latest_training_image)
               <div class="col-lg-7">
+                <div class="img-border">
+                  <img class="img-fluid rounded-3 mb-2" src="{{URL::asset('/admin/upload/LatestTrainingImage/MainImage/' .$latest_training_image->main_image)}}" alt="" />
+                </div>
+                <h5>{!! $latest_training_image->description !!}
+                </h5>
+
+              </div>
+              <div class="col-lg-5">
+                <img class="img-fluid rounded-3 mb-3" src="{{URL::asset('/admin/upload/LatestTrainingImage/UpperImage/' .$latest_training_image->upper_image)}}" alt="" />
+
+                <img class="img-fluid rounded-3 mb-3" src="{{URL::asset('/admin/upload/LatestTrainingImage/LowerImage/' .$latest_training_image->lower_image)}}" alt="" />
+              </div>
+              @endforeach
+              <!-- <div class="col-lg-7">
                 <div class="img-border">
                   <img class="img-fluid rounded-3 mb-2" src="{{URL::asset('frontend/assets/img/latest-tarining-img.webp')}}" alt="" />
                 </div>
@@ -251,25 +270,25 @@
                 <img class="img-fluid rounded-3 mb-3" src="{{URL::asset('frontend/assets/img/latest-tarining-img-D.webp')}}" alt="" />
 
                 <img class="img-fluid rounded-3 mb-3" src="{{URL::asset('frontend/assets/img/latest-tarining-img-E.webp')}}" alt="" />
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-lg-5 welcome">
             <h3>Latest Training</h3>
-
+            @foreach($latest_trainings as $latest_training)
             <ul>
-              <li>Salutations and inauguration of the Traditional eco art lab.</li>
+              <li>{!! $latest_training->description !!}</li>
+              <!-- <li>Salutations and inauguration of the Traditional eco art lab.</li>
               <li>An overview of the handicraft sector and a display of Aipan artwork.</li>
               <li>Quality Control session on handicrafts sector.</li>
               <li>A hands-on workshop for painting walls, stone, fabric, and creating art.</li>
               <li>A briefing on the legal framework and a session on the role of digital marketing in handicrafts.</li>
               <li>Practical instruction in painting sarees, jewelry, coasters, and keychains.</li>
-              <li>Acharya Balkrishna Ji distributed certificates, and the occasion was considered a success.</li>
+              <li>Acharya Balkrishna Ji distributed certificates, and the occasion was considered a success.</li> -->
             </ul>
-
+            @endforeach
           </div>
         </div>
-
       </div>
     </section><!-- End About Us Section -->
 
@@ -283,10 +302,31 @@
             <div class="calendar-head">
               <h3>TRAINING</h3>
               <h2>CALENDAR</h2>
-              <h1>May 2024</h1>
+              <h1>{{ date('F Y') }}</h1>
             </div>
           </div>
+
+          @foreach($trainings as $training)
           <div class="col-lg-3 p-1">
+            <div class="calendar-txt">
+              <div class="card-body">
+                <h4 class="text-center"> {{ date('d', strtotime($training->startdate)) }}-{{ date('d', strtotime($training->enddate)) }}
+                  {{ date('M Y', strtotime($training->startdate)) }}
+                </h4>
+              </div>
+              <div class="card-text p-2">
+                <h6>Programme Title</h6>
+                <p class="program-details">{{$training->title}}</p>
+                <h6 class="pt-3 px-0"><i class='bi bi-clock px-1'></i>Duration</h6>
+                <p class="px-3">{{$training->duration}}</p>
+                <h6 class="pt-3">Target Beneficiaries</h6>
+                <p>{{$training->beneficiaries}}</p>
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+          <!-- <div class="col-lg-3 p-1">
             <div class="calendar-txt">
               <div class="card-body">
                 <h4 class="text-center">06-11 May 2024</h4>
@@ -300,7 +340,6 @@
                 <p>BAMS (Bachelor of Ayurvedic Medicine and Surgery), PG Diploma Candidates and Other interested candidates</p>
               </div>
             </div>
-
           </div>
 
           <div class="col-lg-3 p-1">
@@ -334,7 +373,7 @@
               </div>
             </div>
 
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -399,7 +438,9 @@
         <div class="container-fluid g-0">
           <div class="gallery-slider swiper">
             <div class="swiper-wrapper align-items-center">
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/assam-farm-training-batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              @foreach($home_gallerys as $home_gallery)
+              <div class="swiper-slide"><img src="{{URL::asset('/admin/upload/HomeGallery/' .$home_gallery->image)}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <!-- <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/assam-farm-training-batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/assam-farm-training-batch-2.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-farm-training-batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/hp-farm-training-batch-2.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
@@ -417,7 +458,8 @@
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/uttrakhand-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/uttrakhand-non-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttarakhand-Bakery-Training-Batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
-              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/gallery/traditional-eco-art-training/Uttarakhand-Traditional-Eco-art-Training-Batch-1.webp')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
+              <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/gallery/traditional-eco-art-training/Uttarakhand-Traditional-Eco-art-Training-Batch-1.webp')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div> -->
+            @endforeach
             </div>
             <div class="swiper-pagination"></div>
           </div>
@@ -437,7 +479,9 @@
 
         <div class="wrapper">
           <div class="my-slider">
-            <div><img src="{{URL::asset('frontend/assets/img/usrlm-logo.webp')}}" class="img-fluid" alt=""></div>
+          @foreach($partners as $partner)
+          <div><img src="{{URL::asset('/admin/upload/HomeGallery/' .$partner->image)}}" class="img-fluid" alt=""></div>
+            <!-- <div><img src="{{URL::asset('frontend/assets/img/usrlm-logo.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/partner-logo-B.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/partner-logo-C.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/partner-logo-D.webp')}}" class="img-fluid" alt=""></div>
@@ -452,16 +496,14 @@
             <div><img src="{{URL::asset('frontend/assets/img/clients/partner-logo-7.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/clients/partner-logo-8.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/clients/partner-logo-9.webp')}}" class="img-fluid" alt=""></div>
-
-
             <div><img src="{{URL::asset('frontend/assets/img/clients/agriscience-logo.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/clients/cream-bell-logo.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/clients/dkd-logo.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/clients/ni-msme-logo.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/clients/siaet-logo.webp')}}" class="img-fluid" alt=""></div>
-            <div><img src="{{URL::asset('frontend/assets/img/clients/sumdhu-logo.webp')}}" class="img-fluid" alt=""></div>
+            <div><img src="{{URL::asset('frontend/assets/img/clients/sumdhu-logo.webp')}}" class="img-fluid" alt=""></div> -->
+            @endforeach
           </div>
-
 
         </div>
 

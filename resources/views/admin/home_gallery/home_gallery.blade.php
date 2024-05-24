@@ -44,6 +44,7 @@
                                 <thead>
                                     <tr>
                                         <th>Sr.No.</th>
+                                        <th>Type</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -56,6 +57,7 @@
                                     @foreach($home_galleries as $home_gallery)
                                     <tr>
                                         <td>{{ $count }}</td>
+                                        <td>@if ($home_gallery->type == 1)Voice of Samriddha Gram @else Our Partners @endif</td>
                                         <td>  @if(!empty($home_gallery->image))
                                                 <a href="{{ URL::asset('/admin/upload/HomeGallery/'.$home_gallery->image) }}" target="_blank">
                                                     <img src="{{ URL::asset('/admin/upload/HomeGallery/'.$home_gallery->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">

@@ -12,8 +12,6 @@ class TrainingProgram extends Model
 
     protected $fillable =
     [
-        // 'month',
-        // 'year',
         'startdate',
         'enddate',
         'title',

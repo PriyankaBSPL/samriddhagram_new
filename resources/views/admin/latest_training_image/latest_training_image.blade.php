@@ -57,8 +57,7 @@
                                     @endphp
                                     @foreach($latest_training_images as $latest_training_image)
                                     <tr>
-                                        <td>{{ $count }}</td>
-                                        <td>{{strip_tags(html_entity_decode($latest_training_image->description))}}</td>
+                                        <td>{{ $count }}</td>  
                                         <td>
                                             @if(!empty($latest_training_image->main_image))
                                             <a href="{{ URL::asset('/admin/upload/LatestTrainingImage/MainImage/'.$latest_training_image->main_image) }}" target="_blank">
@@ -80,6 +79,7 @@
                                             </a>
                                             @endif
                                         </td>
+                                        <td>{{strip_tags(html_entity_decode($latest_training_image->description))}}</td>
                                         <td>
                                             <a href="{{ route('latest_training_image.edit', $latest_training_image->id) }}" class="btn btn-primary">Edit</a>
                                             <form action="{{ route('latest_training_image.destroy',$latest_training_image->id) }}" method="POST">

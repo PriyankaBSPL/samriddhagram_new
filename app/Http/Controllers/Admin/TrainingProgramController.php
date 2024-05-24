@@ -37,8 +37,8 @@ class TrainingProgramController extends Controller
     {
         //
         $validator = Validator::make($request->all(), [
-            'startdate' => 'required',
-            'enddate' => 'required|after_or_equal:startdate',
+            'startdate' => 'required|date',
+             'enddate' => 'required|after_or_equal:startdate',
             'title' => 'required',
             'duration' => 'required',
             'beneficiaries' => 'required',
