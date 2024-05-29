@@ -85,7 +85,7 @@
                                             <form action="{{ route('latest_training_image.destroy',$latest_training_image->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this latest training image?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this latest training image?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

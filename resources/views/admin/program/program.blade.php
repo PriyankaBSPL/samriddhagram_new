@@ -71,6 +71,7 @@
                                             {{ $title }}
                                             @endif
                                             @endforeach
+
                                         </td>
                                         <td>@if ($program->design_type == 1)Description @else Description & Image @endif</td>
                                         <td>{{ \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($program->full_description)), 50) }} </td>
@@ -90,7 +91,7 @@
                                             <form action="{{ route('program.destroy',$program->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this program?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this program?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

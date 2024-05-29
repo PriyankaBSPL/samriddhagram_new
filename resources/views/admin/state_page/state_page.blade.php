@@ -68,7 +68,7 @@
                                             <form action="{{ route('state_page.destroy',$state_page->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this state page detail?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this state page detail?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

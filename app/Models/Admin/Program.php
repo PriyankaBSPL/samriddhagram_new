@@ -20,4 +20,9 @@ class Program extends Model
         'side_description',
         'image',
     ];
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'page_title', 'id');
+    }
 }

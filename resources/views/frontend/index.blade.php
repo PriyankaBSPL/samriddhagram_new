@@ -1,8 +1,6 @@
 @extends('frontend.layouts.main')
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -202,12 +200,12 @@
       <div class="container">
 
         <div class="d-flex align-items-center program-inr">
-        @foreach($program_and_trainings as $program_and_trainings)
-        <div>
+          @foreach($program_and_trainings as $program_and_trainings)
+          <div>
             <img class="img-fluid" src="{{URL::asset('/admin/upload/ProgramAndTraining/' .$program_and_trainings->image)}}" alt="" />
             <h5>{{$program_and_trainings->title}}</h5>
           </div>
-        @endforeach
+          @endforeach
           <!-- <div>
             <img class="img-fluid" src="{{URL::asset('frontend/assets/img/program-A.png')}}" alt="" />
             <h5>Krishi Sakhi</h5>
@@ -378,9 +376,6 @@
       </div>
     </section>
 
-
-
-
     <section class="testimonials-gram voics-slide-inr">
 
       <div>
@@ -391,7 +386,14 @@
 
         <div class="container">
           <div class="voice-slide">
+            @foreach($youtubes as $youtube)
             <div>
+              <h3>{{$youtube->title}}</h3>
+              <iframe width="100%" height="400" src="{{$youtube->youtube_link}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            @endforeach
+
+            <!-- <div>
               <h3>Bakery Training</h3>
               <iframe width="100%" height="400" src="https://www.youtube.com/embed/nWhEbeZOQGM" title="From wheat fields to warm pastries, it&#39;s a recipe for rural prosperity! 🌟 | Samriddha Gram |" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
@@ -415,7 +417,6 @@
               <h3>DKD Training</h3>
               <iframe width="100%" height="400" src="https://www.youtube.com/embed/lF1pxOcsgpg" title="Assam&#39;s Krishi Sakhi reviews on Dharti ka Doctor kit TRAINING" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-
             <div>
               <h3>POS Machine Training</h3>
               <iframe width="100%" height="400" src="https://www.youtube.com/embed/bnMgEFvk7f4" title="Samriddha Gram leads the way by providing training on B-POS to Self-Help Groups (SHGs)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -432,7 +433,7 @@
             <div>
               <h3>Empowering Self-Help Groups</h3>
               <iframe width="100%" height="400" src="https://www.youtube.com/embed/PA5eN64N45U" title="Patanjali Empowers Self Help Groups: Transforming Lives and Livelihoods! 🌱💼" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="container-fluid g-0">
@@ -459,7 +460,7 @@
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/uttrakhand-non-farm.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/photo-gallery-slider/Uttarakhand-Bakery-Training-Batch-1.jpg')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div>
               <div class="swiper-slide"><img src="{{URL::asset('frontend/assets/img/gallery/traditional-eco-art-training/Uttarakhand-Traditional-Eco-art-Training-Batch-1.webp')}}" data-gallery="portfolioGallery" class="img-fluid portfolio-lightbox" alt=""></div> -->
-            @endforeach
+              @endforeach
             </div>
             <div class="swiper-pagination"></div>
           </div>
@@ -479,8 +480,8 @@
 
         <div class="wrapper">
           <div class="my-slider">
-          @foreach($partners as $partner)
-          <div><img src="{{URL::asset('/admin/upload/HomeGallery/' .$partner->image)}}" class="img-fluid" alt=""></div>
+            @foreach($partners as $partner)
+            <div><img src="{{URL::asset('/admin/upload/HomeGallery/' .$partner->image)}}" class="img-fluid" alt=""></div>
             <!-- <div><img src="{{URL::asset('frontend/assets/img/usrlm-logo.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/partner-logo-B.webp')}}" class="img-fluid" alt=""></div>
             <div><img src="{{URL::asset('frontend/assets/img/partner-logo-C.webp')}}" class="img-fluid" alt=""></div>
