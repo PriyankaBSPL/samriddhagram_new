@@ -40,7 +40,12 @@
                     <input type="text" class="form-control" name="title" value="{{$data->title}}" placeholder="Enter Title">
                     <span class="text-danger"> @error('title'){{$message}} @enderror</span>
                   </div>
-                 
+                  <div class="form-group">
+                  <label for="exampleInputEmail1">Slug</label>
+                  <span style="color: red;" class="star">*</span>
+                  <input type="text" class="form-control" name="slug" placeholder="Enter Slug"  value="{{$data->slug}}" >
+                  <span class="text-danger"> @error('slug'){{$message}} @enderror</span>
+                </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Select Category</label>
                     <?php //if(!isset($data->parent_id)){  ?>
@@ -96,9 +101,10 @@
                                     <?php
                                     $Array = ["1" => "Gallery", "2" => "Program","3"=>"Other"];
                                     foreach ($Array as $key => $value) {
+                                      
                                     ?>
                                       <option value="<?php echo $value; ?>"
-                                     <?php if((!empty($data->type)?$data->type:old('status'))==$key) echo "selected"; ?>>
+                                     <?php if((!empty($data->type)?$data->type:old('type'))==$value) echo "selected"; ?>>
                                             <?php echo $value; ?></option>
                                         
                                     <?php  } ?>

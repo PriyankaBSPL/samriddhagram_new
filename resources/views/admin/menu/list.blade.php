@@ -46,7 +46,7 @@
                     <th>Title</th>
                     <th>View</th>
                     <th>Type</th>
-                    <!-- <th>Order</th> -->
+                    <th>Order</th>
                     <th>Banner Image</th>
                     <th>Action</th>
                   </tr>
@@ -70,6 +70,14 @@
                 
                 {{$row->type}}
               
+                </td>
+                <td>
+                <?php echo $row->position??0; ?> <i id="{{$row->id}}" onclick="editcatpos(this);"  class="far editbut fa-edit"></i>
+                <span  id="position_{{$row->id}}" style="display:none" >
+                <input class="w-26" type="number"
+                onchange="savedata(this);" id="{{$row->id}}" name="position" value="" /></span>
+                <meta name="csrf-token" content="{{ csrf_token() }}">
+                <p class="text-success" id="success_{{$row->id}}"></p>
                 </td>
                 <!-- <td>{{$row->position}}</td> -->
                 <td>
@@ -114,5 +122,32 @@
     $(document).ready(function() {
         new DataTable('#menu_table');
     });
+    function editcatpos(data) {
+       // alert(data);
+        $("#position_"+data.id).toggle();
+     }
+     function savedata(data) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var position =  data.value;
+        var id =  data.id;
+        var linkurl = "{{ url('/admin/update_menu_orders')}}";
+        jQuery.ajax({
+            url: linkurl,
+            type: "POST",
+            data: {id: id,position:position,update_menu_orders:'update_menu_orders'},
+            cache: false,
+            success: function (html) {
+                setTimeout(function(){
+                    location.reload();
+                },); 
+                $("#position_"+data.id).hide();
+                $("#success_"+data.id).html('This Postion is Updated');
+            },
+        });
+     }
 </script>
 @endsection

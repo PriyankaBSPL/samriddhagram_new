@@ -12,6 +12,7 @@ class CategoryImage extends Model
         'id',
         'cat_id',
         'image',
+        'title',
         'status',
     ];
 }

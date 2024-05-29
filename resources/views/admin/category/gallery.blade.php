@@ -39,6 +39,7 @@
                                         <th>Title</th>
                                         <th>Catgeory Name</th>
                                         <th>Gallery type</th>
+                                        <th>Catgeory Title</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -48,12 +49,16 @@
                                     <?php 
                                     foreach ($data as $row)
                                      {
+                                    
+                                        $name=get_categoryimages_name($row->cat_id,$row->cat_img_id);
+                                     
                                         ?>
                                     <tr>
                                         <td>{{$i++}}</td>
                                         <td>{{$row->gallery_name}}</td>
                                         <td>{{$row->category_name}}</td>
                                         <td>{{$row->menu_name}}</td>
+                                        <td>{{$name->title}}</td>
                                         <form action="{{ route('gallery.destroy', $row->id) }}" method="POST">
                                             <td>
                                                 <a class="btn btn-primary"
