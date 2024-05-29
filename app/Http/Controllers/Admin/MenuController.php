@@ -42,12 +42,13 @@ class MenuController extends Controller
       'title'=>'required',
       'parent_id'=>'required',
       'menu_position'=>'required',
-      'type'=>'required'
+      'type'=>'required',
+      'slug'=>'required'
     ]);
 
     $menu=new Menu;
     $menu->title=$request->title;
-    $menu->slug=Str::slug((clean_single_input($request->title)));
+    $menu->slug=$request->slug=='#'?"#":Str::slug(clean_single_input($request->slug));
     $menu->parent_id=$request->parent_id;
     $menu->status=$request->status;
     $menu->menu_position=$request->menu_position;
@@ -95,12 +96,13 @@ class MenuController extends Controller
     {
         $validator= $request->validate([
             'title'=>'required',
-            'parent_id'=>'required'
+            'parent_id'=>'required',
+            'slug'=>'required'
           ]);
       
           $menu=Menu::find($id);
           $menu->title=$request->title;
-          $menu->slug=Str::slug((clean_single_input($request->title)));
+          $menu->slug=$request->slug=='#'?"#":Str::slug(clean_single_input($request->slug));
           $menu->parent_id=$request->parent_id;
           $menu->status=$request->status;
           $menu->menu_position=$request->menu_position;

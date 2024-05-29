@@ -18,16 +18,22 @@ class GalleryController extends Controller
         $title='Gallery List';
         $data = DB::table('galleries')
         ->join('categories as cat1', 'galleries.cat_id', '=', 'cat1.id')
+        // ->join('category_images', 'cat1.id', '=', 'category_images.cat_id')
         ->join('menus', 'menus.id', '=', 'cat1.type')
         ->select(
             'galleries.id',
+            'galleries.cat_img_id',
             'galleries.title as gallery_name',
             'cat1.title as category_name',
-            'cat1.id as cat_id',
+            'galleries.cat_id',
             'menus.title as menu_name'
+          //  'category_images.id as category_img_id'
         )
-        ->orderBy('id','DESC')->paginate('20');
-       
+        ->orderBy('galleries.id','DESC')->paginate('20');
+    //    echo "<pre>";
+    //    print_r($data);
+    //    echo "</pre>";
+    //    exit;
         return view('admin.category.gallery',compact('title','data'));
     }
 
@@ -44,15 +50,19 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {  
+        // echo "<pre>";
+        // print_r($request->all());exit;
         $validator = Validator::make($request->all(), [
         'title' => 'required',
     ]);
     if ($validator->fails()) {
         return redirect('admin/gallery')->withErrors($validator)->withInput();
     }
+    $cat_img_id = $request->input('row_id');
     $gallery = new Gallery;
     $gallery->title = $request->title;
     $gallery->cat_id = $request->cat_id; // Assuming 'cat_id' is provided in the form data
+    $gallery->cat_img_id = $cat_img_id; 
     $gallery_result = $gallery->save();
     $last_id = $gallery->id;
 
@@ -70,14 +80,15 @@ class GalleryController extends Controller
             } else {
                 return redirect('admin/gallery')->withError('Failed to upload gallery image.');
             }
+        //    return redirect()->back();
         }
     }
 
     // Check if gallery data was saved successfully
     if ($gallery_result) {
-        return redirect('admin/gallery')->withSuccess('Gallery Data Added Successfully');
+        return redirect()->back()->withSuccess('Gallery Data Added Successfully');
     } else {
-        return redirect('admin/gallery')->withError('Unable to Add Gallery Data');
+        return redirect()->back()->withError('Unable to Add Gallery Data');
     }
     }
 
@@ -112,8 +123,11 @@ class GalleryController extends Controller
         if ($validator->fails()) {
             return redirect('admin/gallery')->withErrors($validator)->withInput();
         }
+        
         $gallery = Gallery::find($id);
         $gallery->title = $request->title;
+       
+        
        // Assuming 'cat_id' is provided in the form data
         $gallery_result = $gallery->save();
         $last_id = $gallery->id;
