@@ -172,8 +172,6 @@
       @endforeach
     </section>
 
-
-
     <!-- ======= Clients Section ======= -->
     <section class="end-to-end">
       <div class="container">

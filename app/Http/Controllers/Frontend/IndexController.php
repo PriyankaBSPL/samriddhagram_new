@@ -60,15 +60,9 @@ class IndexController extends Controller
     public function program($slug,$id)
     {
         // $programs = Program::where('page_title',$id)->get();
-        $programs = Program::with('menu')->where('page_title', $id)->get();
-        return view('frontend.description', compact('programs'));
+         $programs = Program::with('menu')->where('page_title', $id)->orderBy('id', 'DESC')->get();
+        return view('frontend.program', compact('programs'));
     }
-
-    public function agro_entrepreneurship_training_program()
-    {
-        return view('frontend.agro-entrepreneurship-training-program');
-    }
-
 
     public function contact_us()
     {
