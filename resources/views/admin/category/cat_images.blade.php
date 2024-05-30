@@ -46,6 +46,7 @@ Add
                                         <th>Images</th>
                                         <th>View Image</th>
                                         <th>Update Image</th>
+                                        <th>Title</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -53,6 +54,7 @@ Add
                                     @if(count($data) > 0)
                                     @php $i=1; @endphp
                                     @foreach ($data as $row)
+                                    
                                     <tr>
                                         <in>
                                         <td>{{$i++}}</td>
@@ -60,7 +62,6 @@ Add
                                         <img src="{{ URL::asset('/admin/uploads/category_image/'.$row->image)}}" style="width:50px;height:50px;border-radius:50%;border:1px solid#ddd;">
                                         </td>
                                             <td><a  target="_blank"  href="{{ URL::asset('/admin/uploads/category_image/'.$row->image)}}" ><i class="fas fa-eye"></i></a></td>
-                                                
                                             <td>
                                                 <!-- Add form for updating image -->
                                                 <form id="updateImageForm" action="{{ url('/category_image/update_image/') }}" method="POST" enctype="multipart/form-data">
@@ -70,11 +71,20 @@ Add
                                                     <span class="thumbnail_img_error" style="color:red;"></span>
                                                     <button type="submit" class="btn btn-primary">Update Image</button>
                                                 </form>
+                                            </td>  
+                                            <td>
+                                                <!-- Add form for updating image -->
+                                                <form action="{{ url('/category_image/update_title/') }}" method="POST" >
+                                                    @csrf          
+                                            <input type="text" class="form-control" name="new_title" value="<?=isset($row->title)?$row->title:""?>"  placeholder="Enter Title">
+                                                    <input type="hidden" name="title_id" value="{{$row->id}}">
+                                                    <button type="submit" class="btn btn-primary">Update Title</button>
+                                                </form>
                                             </td>
                                             <td> 
                                             <a  class="btn btn-danger" href="{{url('category_image/delete/'.$row->id)}}"
                                               onclick="return confirm('Are you sure want to delete image?')"><i class="fas fa-trash-alt" style="font-size: 15px;"></i></a>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal2"><i class="fas fa-plus" style="font-size: 15px;"></i></button>
+                                <b type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal2" data-id="{{ $row->id }}"><i class="fas fa-plus" style="font-size: 15px;"></i></button>
                           
                                                  </td>
                                         </form>
@@ -136,6 +146,7 @@ Add
       <div class="modal-body">
       <div class="form-group">
                   <label for="exampleInputEmail1">Title</label>
+                  <input type="hidden" name="row_id">
                   <span style="color: red;" class="star">*</span>
                   <input type="text" class="form-control" name="title" placeholder="Enter Title">
                   <span class="text-danger"> @error('title'){{$message}} @enderror</span>
@@ -179,6 +190,13 @@ Add
 <script>
 $(document).ready(function() {
     new DataTable('#menu_table');
+    $('#exampleModal2').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('id'); // Extract id from data-id attribute
+
+        // Update the value of the hidden input field with the id
+        $(this).find('input[name="row_id"]').val(id);
+    });
 });
 </script>
 @endsection

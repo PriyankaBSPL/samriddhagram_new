@@ -173,8 +173,10 @@ if (!function_exists('cat_build_child_one')) {
 				if ($row->id == $cat_id)
 					$selected = "selected";
 			}
-			$tempReturnValue .= '<option value="' . $row->id . '" ' . $selected . '><strong>&nbsp;--&nbsp;' . $row->title . '</strong></option>';
-			$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother = '', $cat_id);
+
+			$tempReturnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>&nbsp;----&nbsp&nbsp;'.$row->title.'</strong></option>';
+			$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $cat_id);
+
 		}
 
 		return $tempReturnValue;
@@ -217,7 +219,9 @@ if (!function_exists('build_child_three')) {
 				if ($row->id == $cat_id)
 					$selected = "selected";
 			}
+
 			$tempReturnValue .= '<option value="' . $row->id . '" ' . $selected . '><strong>&nbsp;---&nbsp;' . $row->title . '</strong></option>';
+
 			//$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $menu_positions);
 		}
 
@@ -267,6 +271,7 @@ if (!function_exists('get_menu_name')) {
 	}
 }
 
+
 if (!function_exists('getMenuData')) {
     function getMenuData($id)
     {
@@ -277,6 +282,28 @@ if (!function_exists('getMenuData')) {
 					->orderBy('position')
                     ->get();
     } 
+}
+
+
+if (!function_exists('get_categoryimages_id')) {
+	function get_categoryimages_id($cat_id)
+	{
+		$fetchResult = DB::table('category_images')->select('title','id')->where('cat_id',$cat_id)->first();
+		return $fetchResult->id;
+	}
+}
+if (!function_exists('get_categoryimages_name')) {
+	function get_categoryimages_name($cat_id,$id)
+	{
+		// print_r($cat_id);
+		// print_r($id);
+		// DB::enableQueryLog();
+		$fetchResult = DB::table('category_images')->select('title','id')->where('cat_id',$cat_id)->where('id',$id)->first();
+		return $fetchResult;
+		// $queries = DB::getQueryLog();
+        // $lastQuery = end($queries);
+		// dd($lastQuery);
+	}
 }
 
 
