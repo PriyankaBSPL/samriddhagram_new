@@ -17,7 +17,11 @@ use App\Models\Admin\TrainingProgram;
 use App\Models\Admin\ProgramAndTraining;
 use App\Models\Admin\LatestTrainingImage;
 use App\Models\Admin\Program;
-
+use App\Models\Admin\Gallery;
+use App\Models\Admin\GalleryImage;
+use App\Models\Admin\Category;
+use App\Models\Admin\CategoryImage;
+use App\Models\Admin\Menu;
 class IndexController extends Controller
 {
     //
@@ -62,6 +66,20 @@ class IndexController extends Controller
         // $programs = Program::where('page_title',$id)->get();
         $programs = Program::with('menu')->where('page_title', $id)->get();
         return view('frontend.description', compact('programs'));
+    }
+    public function category($slug,$id)
+    {
+        $data = Menu::where('id', $id)->first();
+        $title=$data->title;
+        $gallery = Category::where('type', $id)->get();
+        return view('frontend.category', compact('gallery','title'));
+    }
+    public function gallery($id)
+    {
+    
+        $data = Gallery::where('cat_img_id', $id)->get();
+        $title='test';
+        return view('frontend.gallery', compact('data','title'));
     }
 
     public function agro_entrepreneurship_training_program()

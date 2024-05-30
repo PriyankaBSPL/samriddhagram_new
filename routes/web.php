@@ -63,7 +63,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/about', [IndexController::class, 'about']);
 Route::get('/program/{slug}/{id}', [IndexController::class, 'program']);
-
+Route::get('/category/{slug}/{id}', [IndexController::class, 'category']);
+Route::get('/gallery/{id}', [IndexController::class, 'gallery']);
 Route::get('/agro-entrepreneurship-training-program', [IndexController::class, 'agro_entrepreneurship_training_program']);
 Route::get('/contact-us', [IndexController::class, 'contact_us']);
+// Route::get('/pages/{slug}', [IndexController::class, 'pages']);
 Route::post('contactsave', [IndexController::class, 'contactsave'])->name('contactsave');
