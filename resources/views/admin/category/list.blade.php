@@ -42,6 +42,7 @@
                                         <th>Title</th>
                                         <th>Type</th>
                                         <th>Images</th>
+                                        
                                         <th>Action</th>
                                     </tr>
                                 </thead>

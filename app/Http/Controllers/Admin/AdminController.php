@@ -8,6 +8,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\CategoryImage;
 use App\Models\Admin\Gallery;
 use App\Models\Admin\GalleryImage;
+use App\Models\Admin\Menu;
 class AdminController extends Controller
 {
     public function delete_image($id){
@@ -50,8 +51,23 @@ public function update_image(Request $request)
     // Return success response
     return redirect()->back()->withSuccess('Image updated Successfully!!!');
 }
+public function update_title(Request $request)
+{
+   
+        $request->validate([
+        'title_id' => 'required|exists:category_images,id',
+        ]);
+        $title_id = $request->input('title_id');
+        $title = $request->input('new_title');
+        $data = CategoryImage::findOrFail($title_id);
+        $data->title = $title;
+        $data->save();
+        return redirect()->back()->withSuccess('Title updated Successfully!!!');
+}
 public function add_image(Request $request){
+  
     $category_id = $request->category_id;
+   
     $success = false;
     if ($request->hasFile('image')) {
         foreach ($request->file('image') as $row) {
@@ -61,6 +77,7 @@ public function add_image(Request $request){
                 // Set the image and category ID on the model
                 $category_image->image = $image; 
                 $category_image->cat_id = $category_id; 
+               
                 // Save the model to the database
                 $result = $category_image->save();
                 // If any of the saves are successful, we consider it a success
@@ -109,5 +126,26 @@ public function delete_gallery_images(Request $request)
      }
      GalleryImage::where('id',  $geid)->delete();
    die();
+}
+public function update_menu_orders(Request $request){
+    $msg=array();
+    if($request->ajax())
+    {
+        $id= clean_single_input( $request->id);
+           $pArray['position'] =clean_single_input($request->position);
+           $data = Menu::where('id', $id)->first();
+           if($data->position!==$request->position){
+               $create 	= Menu::where('id', $id)->update($pArray);
+               $msg['success']='This Postion is Updated';
+           }else{
+               $msg['error']='This Postion Alredy Taken';
+           }
+        $lastInsertID = $id;
+        if($create > 0){
+            echo json_encode($msg);
+            die();
+                    
+        }
+    }
 }
 }

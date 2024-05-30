@@ -37,7 +37,12 @@
                   <input type="text" class="form-control" name="title" placeholder="Enter Title">
                   <span class="text-danger"> @error('title'){{$message}} @enderror</span>
                 </div>
-
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Slug</label>
+                  <span style="color: red;" class="star">*</span>
+                  <input type="text" class="form-control" name="slug" placeholder="Enter Slug">
+                  <span class="text-danger"> @error('slug'){{$message}} @enderror</span>
+                </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Select Category</label>
                   <?php if (!isset($cat_id)) {
