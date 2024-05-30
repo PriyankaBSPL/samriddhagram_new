@@ -34,31 +34,5 @@
         @endif
     </main>
 </body> 
-<!-- 
-<body>
-    <main class="internal-pages">
-        @if($programs->count() > 0)
-            @foreach($programs as $program)
-                <section class="internal-banner-slide">
-                    <div class="container">
-                        <h1>{{ $program->menu->title }}</h1>
-                    </div>
-                </section>
 
-                <section class="dharti-ka-doctor">
-                    <div class="container">
-                        <p>{!! $program->full_description !!}</p>
-                    </div>
-                </section>
-            @endforeach
-        @else
-            <section class="internal-banner-slide">
-                <div class="container">
-                    <h1>No programs found.</h1>
-                </div>
-            </section>
-        @endif
-    </main>
-</body> -->
-@endsection
 @endsection

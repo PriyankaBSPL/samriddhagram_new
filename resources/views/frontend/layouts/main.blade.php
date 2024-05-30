@@ -73,22 +73,47 @@
             @foreach (getMenuData(0) as $menuItem)
             @if($menuItem->subMenu && $menuItem->subMenu->count() > 0)
             <li>
-              <a href="#">{{ $menuItem->title }}</a>
+             <a href="#"> {{ $menuItem->title }}</a>
               <ul class="nav-dropdown">
                 @foreach (getMenuData($menuItem->id) as $child)
+               
                 <li>
-                  <a href="{{ $child->slug }}">{{ $child->title }}</a>
+              @if($menuItem->title == 'Gallery')
+              <a href="{{ url('category/'.$child->slug.'/'.$child->id) }}">{{ $child->title }}</a>
+              @elseif($menuItem->title == 'Program')
+              <a href="{{ url('program/'.$child->slug.'/'.$child->id) }}">{{ $child->title }}</a>
+              @elseif($menuItem->title == 'Other')
+              <a href="{{ url('pages/'.$child->slug) }}">{{ $child->title }}</a>
+              @endif
+                 
                   @if($child->subMenu && $child->subMenu->count() > 0)
                   <ul class="nav-dropdown">
                     @foreach (getMenuData($child->id) as $subChild)
+                  
                     <li>
-                      <a href="{{ $subChild->slug }}">{{ $subChild->title }}</a>
+                @if($menuItem->title == 'Gallery')
+                <a href="{{ url('category/'.$subChild->slug.'/'.$subChild->id) }}">{{ $subChild->title }}</a>
+                @elseif($menuItem->title == 'Program')
+                <a href="{{ url('program/'.$subChild->slug.'/'.$subChild->id) }}">{{ $subChild->title }}</a>
+                @elseif($menuItem->title == 'Other')
+                <a href="{{ url('pages/'.$subChild->slug) }}">{{ $subChild->title }}</a>
+                @endif
+
+                     
 
                       @if($subChild->subMenu && $subChild->subMenu->count() > 0)
                       <ul class="nav-dropdown">
                         @foreach (getMenuData($subChild->id) as $lastChild)
                         <li>
-                          <a href="{{ $lastChild->slug }}">{{ $lastChild->title }}</a>
+                        <li>
+                    @if($menuItem->title == 'Gallery')
+                    <a href="{{ url('category/'.$lastChild->slug.'/'.$lastChild->id) }}">{{ $lastChild->title }}</a>
+                    @elseif($menuItem->title == 'Program')
+                    <a href="{{ url('program/'.$lastChild->slug.'/'.$lastChild->id) }}">{{ $lastChild->title }}</a>
+                    @elseif($menuItem->title == 'Other')
+                    <a href="{{ url('pages/'.$lastChild->slug) }}">{{ $lastChild->title }}</a>
+                    @endif
+
                         </li>
                         @endforeach
                       </ul>
@@ -103,7 +128,7 @@
             </li>
             @else
             <li>
-              <a class="nav-link {{ Request::is($menuItem->slug) ? 'active' : '' }}" href="{{ $menuItem->slug }}">{{ $menuItem->title }}</a>
+              <a class="nav-link {{ Request::is($menuItem->slug) ? 'active' : '' }}" href="{{ url($menuItem->slug) }}">{{ $menuItem->title }}</a>
             </li>
             @endif
             @endforeach

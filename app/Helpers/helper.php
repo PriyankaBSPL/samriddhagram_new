@@ -295,15 +295,41 @@ if (!function_exists('get_categoryimages_id')) {
 if (!function_exists('get_categoryimages_name')) {
 	function get_categoryimages_name($cat_id,$id)
 	{
-		// print_r($cat_id);
-		// print_r($id);
-		// DB::enableQueryLog();
+		
 		$fetchResult = DB::table('category_images')->select('title','id')->where('cat_id',$cat_id)->where('id',$id)->first();
 		return $fetchResult;
-		// $queries = DB::getQueryLog();
-        // $lastQuery = end($queries);
-		// dd($lastQuery);
+	;
 	}
 }
 
+if (!function_exists('get_category_image')) {
+	function get_category_image($sid)
+	{
+		$fetchResult = DB::table('category_images')->where('cat_id', $sid)->get();
+		return $fetchResult;
+	}
+}
 
+if (!function_exists('check_gallery_data')) {
+	function check_gallery_data($cat_id,$cat_img_id)
+	{
+		$fetchResult = DB::table('galleries')->where('cat_id', $cat_id)->where('cat_img_id', $cat_img_id)->exists();
+		return $fetchResult;
+	}
+}
+
+if (!function_exists('check_gallery_images')) {
+	function check_gallery_images($gallery_id)
+	{
+		$fetchResult = DB::table('gallery_images')->where('gallery_id', $gallery_id)->exists();
+		return $fetchResult;
+	}
+}
+
+if (!function_exists('get_gallery_images_data')) {
+	function get_gallery_images_data($gallery_id)
+	{
+		$fetchResult = DB::table('gallery_images')->where('gallery_id', $gallery_id)->get();
+		return $fetchResult;
+	}
+}
