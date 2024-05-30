@@ -18,7 +18,7 @@ class ProgramController extends Controller
         //
         $title = "Program List";
         $page = Program::orderBy('created_at', 'desc')->get();
-        $SelectPage = Menu::where('type', 'Program')->where('status', 3)->where('parent_id', '>', 1)->pluck('title', 'id');
+        $SelectPage = Menu::where('type', 'Program')->where('status', 3)->where('parent_id', '>', 3)->pluck('title', 'id');
         return view('admin.program.program', ['programs' => $page, 'SelectPage' => $SelectPage], compact('title'));
     }
 
@@ -29,7 +29,7 @@ class ProgramController extends Controller
     {
         //
         $title = "Add Program";
-        $SelectPage = Menu::where('type', 'Program')->where('status', 3)->where('parent_id', '>', 1)->pluck('title', 'id');
+        $SelectPage = Menu::where('type', 'Program')->where('status', 3)->where('parent_id', '>', 3)->pluck('title', 'id');
         return view('admin.program.create', ['SelectPages'=> $SelectPage], compact('title'));
     }
 
@@ -105,7 +105,7 @@ class ProgramController extends Controller
         //
         $title = "Edit Program";
         $program = Program::find($id);
-        $SelectPage = Menu::where('type', 'Program')->where('status', 3)->where('parent_id', '>', 1)->pluck('title', 'id');
+        $SelectPage = Menu::where('type', 'Program')->where('status', 3)->where('parent_id', '>', 3)->pluck('title', 'id');
         return view('admin.program.edit', ['programs' => $program, 'SelectPages'=> $SelectPage], compact('title'));
     }
 

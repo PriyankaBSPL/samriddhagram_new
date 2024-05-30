@@ -1,3 +1,8 @@
+@extends('frontend.layouts.main')
+@section('content')
+
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +18,6 @@
 </head>
 
 <body>
-
-  <?php require_once('header.php') ?>
 
   <main class="internal-pages">
 
@@ -39,7 +42,7 @@
 
             <p>Let us join hands to shape a brighter future where every family living in rural areas are prosperous,
               economically secure, and living fulfilling lives.</p>
-          </div><!-- End Contact Form -->
+          </div>
         </div>
       </div>
     </section>
@@ -61,7 +64,7 @@
               skill set of women SHGs, creating fresh livelihoods in rural areas by means of its capacity building and
               business expansion initiatives. It has developed an entire digital ecosystem with its one-stop business
               support solution, combined with its unique marketing strategy.</p>
-          </div><!-- End Contact Form -->
+          </div>
 
           <div class="col-lg-5">
             <img src="assets/img/gram-A.webp">
@@ -136,9 +139,64 @@
     </section>
   </main>
 
-  <?php require_once('footer.php') ?>
-  <!-- ======= Footer ======= -->
+</body> -->
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Samriddhagram: About Us</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link href="assets/img/favicon.webp" rel="icon">
+
+</head>
+
+<body>
+
+  <main class="internal-pages">
+    @foreach($abouts as $about)
+    <section class="about-us">
+      <div class="container">
+        <div class="row align-items-center">
+
+          <div class="col-lg-6">
+            <img src="assets/img/about-samridh-gram.webp">
+          </div>
+
+          <div class="col-lg-6">
+            {!! $about->banner_description !!}
+          </div><!-- End Contact Form -->
+        </div>
+      </div>
+    </section>
+
+
+    <section class="why-samriddh">
+      <div class="container">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-7">
+            {!! $about->side_description !!}
+          </div><!-- End Contact Form -->
+
+          <div class="col-lg-5">
+            <img src="{{URL::asset('/admin/upload/About/' .$about->image)}}">
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-lg-12 rural-business">
+            {!! $about->description !!}
+          </div>
+
+        </div>
+
+    </section>
+    @endforeach
+  </main>
 
 </body>
 
-</html>
+@endsection

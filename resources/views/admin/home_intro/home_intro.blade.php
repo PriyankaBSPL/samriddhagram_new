@@ -80,7 +80,7 @@
                                             <form action="{{ route('home_intro.destroy',$home_intro->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this home intro?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this home intro?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

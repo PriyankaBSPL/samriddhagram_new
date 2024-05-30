@@ -68,7 +68,7 @@
                                             <form action="{{ route('home_banner.destroy',$home_banner->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this home banner?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this home banner?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

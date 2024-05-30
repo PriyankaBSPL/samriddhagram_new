@@ -158,8 +158,6 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-       
-
     DB::table('gallery_images')->where('gallery_id', $gallery->id)->delete();
     $result = $gallery->delete();
         if($result){

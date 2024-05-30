@@ -70,7 +70,7 @@
                                             <form action="{{ route('training.destroy',$training->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this training program?')">Delete</button>
+                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this training program?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

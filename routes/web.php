@@ -61,8 +61,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+Route::get('/about', [IndexController::class, 'about']);
+Route::get('/program/{slug}/{id}', [IndexController::class, 'program']);
 
-// Route::resource('/training', TrainingProgramController::class);
-// Route::resource('/youtube', YoutubeLinkController::class);
-// Route::resource('/home_gallery', HomeGalleryController::class);
-// Route::resource('/home_intro', HomeIntroController::class);
+Route::get('/agro-entrepreneurship-training-program', [IndexController::class, 'agro_entrepreneurship_training_program']);
+Route::get('/contact-us', [IndexController::class, 'contact_us']);
+Route::post('contactsave', [IndexController::class, 'contactsave'])->name('contactsave');

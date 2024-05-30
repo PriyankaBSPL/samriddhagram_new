@@ -1,4 +1,5 @@
 <?php
+
 use Carbon\Carbon;
 use App\Models\Admin\WebLogs;
 use App\Models\Admin\Menu;
@@ -119,125 +120,113 @@ if (!function_exists('clean_single_input')) {
 		//$content_desc = preg_replace("/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s","",$content_desc);
 
 		return $content_desc;
-
 	}
-
 }
-if ( ! function_exists('primary_menu')){
-	function primary_menu( $cat_id='')
+if (!function_exists('primary_menu')) {
+	function primary_menu($cat_id = '')
 	{
 		$selected = "";
-		if($cat_id != '')
-		{
-			if( $cat_id == 0 )
-				$selected="selected";
+		if ($cat_id != '') {
+			if ($cat_id == 0)
+				$selected = "selected";
 		}
 
 		$returnValue = '<div class="">
 							<div class="form-group">
 								<select name="parent_id" class="input_class form-control" id="menucategory" autocomplete="off">
 									<option value=""> Select </option>
-									<option value ="0" '.$selected.'>It is Root Category</option>';
-			
-			$whEre = array(	
-							'parent_id'			=> 0
-						);
-			$nav_query = DB::table('menus')->select('*')->where($whEre)->get();
-			foreach($nav_query as $row)
-			{
-				$selected = "";
-				if($cat_id != '')
-				{
-					if($row->id == $cat_id)
-						$selected="selected";
-				}
-				$returnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>'.$row->title.'</strong></option>';
+									<option value ="0" ' . $selected . '>It is Root Category</option>';
 
-                                $returnValue .= cat_build_child_one($row->id,  $tempReturnValueAnother='', $cat_id);
+		$whEre = array(
+			'parent_id'			=> 0
+		);
+		$nav_query = DB::table('menus')->select('*')->where($whEre)->get();
+		foreach ($nav_query as $row) {
+			$selected = "";
+			if ($cat_id != '') {
+				if ($row->id == $cat_id)
+					$selected = "selected";
 			}
+			$returnValue .= '<option value="' . $row->id . '" ' . $selected . '><strong>' . $row->title . '</strong></option>';
+
+			$returnValue .= cat_build_child_one($row->id,  $tempReturnValueAnother = '', $cat_id);
+		}
 		$returnValue .=    		'</select>
 							</div>
 						</div>';
 
 		return $returnValue;
 	}
-	
 }
-if ( ! function_exists('cat_build_child_one'))
-{
+if (!function_exists('cat_build_child_one')) {
 	function cat_build_child_one($parent_id, $tempReturnValue, $cat_id)
 	{
-            
+
 		$tempReturnValue .= $tempReturnValue;
-		$whEre = array(	
-						'parent_id'			=> $parent_id
-						);
+		$whEre = array(
+			'parent_id'			=> $parent_id
+		);
 		$nav_query = DB::table('menus')->select('*')->where($whEre)->get();
-		foreach($nav_query as $row)
-		{
+		foreach ($nav_query as $row) {
 			$selected = "";
-			if($cat_id != '')
-			{
-				if($row->id == $cat_id)
-					$selected="selected";
+			if ($cat_id != '') {
+				if ($row->id == $cat_id)
+					$selected = "selected";
 			}
+
 			$tempReturnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>&nbsp;----&nbsp&nbsp;'.$row->title.'</strong></option>';
 			$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $cat_id);
+
 		}
 
 		return $tempReturnValue;
 	}
 }
-if ( ! function_exists('build_child_two'))
-{
+if (!function_exists('build_child_two')) {
 	function build_child_two($parent_id, $tempReturnValue, $cat_id)
 	{
-            
+
 		$tempReturnValue .= $tempReturnValue;
-		$whEre = array(	
-						'parent_id'			=> $parent_id
-						);
+		$whEre = array(
+			'parent_id'			=> $parent_id
+		);
 		$nav_query = DB::table('menus')->select('*')->where($whEre)->get();
-		foreach($nav_query as $row)
-		{
+		foreach ($nav_query as $row) {
 			$selected = "";
-			if($cat_id != '')
-			{
-				if($row->id == $cat_id)
-					$selected="selected";
+			if ($cat_id != '') {
+				if ($row->id == $cat_id)
+					$selected = "selected";
 			}
-			$tempReturnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>&nbsp;---&nbsp;'.$row->title.'</strong></option>';
-			$tempReturnValue .= build_child_three($row->id, $tempReturnValueAnother='', $cat_id);
+			$tempReturnValue .= '<option value="' . $row->id . '" ' . $selected . '><strong>&nbsp;---&nbsp;' . $row->title . '</strong></option>';
+			$tempReturnValue .= build_child_three($row->id, $tempReturnValueAnother = '', $cat_id);
 		}
 
 		return $tempReturnValue;
 	}
 }
-if ( ! function_exists('build_child_three'))
-{
+if (!function_exists('build_child_three')) {
 	function build_child_three($parent_id, $tempReturnValue, $cat_id)
 	{
-            
+
 		$tempReturnValue .= $tempReturnValue;
-		$whEre = array(	
-						'parent_id'			=> $parent_id
-						);
+		$whEre = array(
+			'parent_id'			=> $parent_id
+		);
 		$nav_query = DB::table('menus')->select('*')->where($whEre)->get();
-		foreach($nav_query as $row)
-		{
+		foreach ($nav_query as $row) {
 			$selected = "";
-			if($cat_id != '')
-			{
-				if($row->id == $cat_id)
-					$selected="selected";
+			if ($cat_id != '') {
+				if ($row->id == $cat_id)
+					$selected = "selected";
 			}
-			$tempReturnValue .= '<option value="'.$row->id.'" '.$selected.'><strong>&nbsp;----&nbsp&nbsp;'.$row->title.'</strong></option>';
+
+			$tempReturnValue .= '<option value="' . $row->id . '" ' . $selected . '><strong>&nbsp;---&nbsp;' . $row->title . '</strong></option>';
+
 			//$tempReturnValue .= build_child_two($row->id, $tempReturnValueAnother='', $menu_positions);
 		}
 
 		return $tempReturnValue;
 	}
-
 }
 if (!function_exists('check_menu')) {
 	function check_menu($pid)
@@ -245,7 +234,6 @@ if (!function_exists('check_menu')) {
 
 		$fetchResult = DB::table('menus')->where('parent_id', $pid)->exists();
 		return $fetchResult;
-
 	}
 }
 if (!function_exists('get_status')) {
@@ -283,6 +271,20 @@ if (!function_exists('get_menu_name')) {
 	}
 }
 
+
+if (!function_exists('getMenuData')) {
+    function getMenuData($id)
+    {
+        return Menu::with('subMenu')
+                    ->where('status', 3)
+                    ->where('menu_position', 1)
+                     ->where('parent_id', $id)
+					->orderBy('position')
+                    ->get();
+    } 
+}
+
+
 if (!function_exists('get_categoryimages_id')) {
 	function get_categoryimages_id($cat_id)
 	{
@@ -303,12 +305,5 @@ if (!function_exists('get_categoryimages_name')) {
 		// dd($lastQuery);
 	}
 }
-// if (!function_exists('get_gallerytype_name')) {
-// 	function get_gallerytype_name($gallery_id)
-// 	{
 
-// 		$fetchResult = DB::table('galleries')->select('title')->where('id', $gallery_id)->first();
-// 		return $fetchResult;
-// 	}
-// }
-?>
+

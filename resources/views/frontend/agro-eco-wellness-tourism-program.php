@@ -14,8 +14,6 @@
 
 <body>
 
- <?php require_once('header.php')?>
- 
  <main class="internal-pages">
      <section class="internal-banner-slide">
           <div class="container">
@@ -52,7 +50,7 @@
 <li>Works as an add-on in sustainable farming. </li>
 <li>Reduces rural migration. </li>
             </ul>
-     </div><!-- End Contact Form -->
+     </div>
 
       </div>
       
@@ -61,8 +59,7 @@
 <p>During the training, participants will be theoretically and practically educated about the skills necessary for the wellness and tourism industry. Their expertise through Samridhha Gram’s other training programs like medicinal plant farming and QA/QC training will help them embrace agro tourism to the fullest potential. Tourism through homestays, farm stays, lodges, and tourist homes are bound to help the socio-economic development of the rural population. Our Customer Relationship Management service will also help farmers after the initial training. Thus, Samriddha Gram will continuously provide essential guidance making sure the ground reality of agro-tourism is as merry as its theory.  </p>
 <p>People from all over the world are keen on experiencing the everyday life of Indian villages, participating in agricultural activities, and enjoying local cuisines. This immersive cultural exchange with a flavor of rural traditions can be used smartly to boost the rural economy. Soon, Indian villages will become a hot-spot for cultural exchange away from the excessive commercialism of typical tourist destinations.</p>
 </div>
-      
-<!-- End Contact Form -->
+
     </div>
       
         
@@ -75,8 +72,6 @@
   
  </main>
 
- <?php require_once('footer.php')?>
-  <!-- ======= Footer ======= -->
 
 </body>
 
