@@ -78,7 +78,9 @@ class IndexController extends Controller
     {
     
         $data = Gallery::where('cat_img_id', $id)->get();
-        $title='test';
+        $category_img_data = CategoryImage::where('id', $id)->first();
+        $category_data = Category::where('id', $category_img_data->cat_id)->first();
+        $title=$category_img_data->title;
         return view('frontend.gallery', compact('data','title'));
     }
 
@@ -86,8 +88,6 @@ class IndexController extends Controller
     {
         return view('frontend.agro-entrepreneurship-training-program');
     }
-
-
     public function contact_us()
     {
         return view('frontend.contact-us');

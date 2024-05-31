@@ -25,21 +25,33 @@ if(check_category_image($row->id))
 {
    $category_images=get_category_image($row->id);
    foreach($category_images as $img){
-      if(check_gallery_data($row->id,$img->id)>0){
-         $url="gallery/$img->id";
-      }else{
-         $url="#";
-      }
+?>
+<?php
+  if(check_gallery_data($row->id,$img->id)>0){
 ?>
                    <div class="col-lg-4">
                   <div class="gallery-traing">
-                     <a href="{{url($url)}}"> 
+                     <a href="{{url('gallery/'.$img->id)}}"> 
                      <img src="{{ URL::asset('/admin/uploads/category_image/'.$img->image)}}"  alt="">
                     
                           </a>
                   </div>
                   </div>
+<?php }else{?>
+   <div class="col-lg-3 col-md-3 portfolio-item">
+                     <div class="portfolio-wrap">
+                     <a href="#">
+                        <img src="{{ URL::asset('/admin/uploads/category_image/'.$img->image)}}" class="img-fluid" alt="" data-pagespeed-url-hash="2411853377" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                        </a>
+                        <div class="portfolio-info">
+                           <div class="portfolio-links">
+                              <a href="{{ URL::asset('/admin/uploads/category_image/'.$img->image)}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bi bi-plus"></i></a>
 
+                           </div>
+                        </div>
+                     </div>
+                     </div>
+   <?php }?>
 <?php
 }
  }?>
