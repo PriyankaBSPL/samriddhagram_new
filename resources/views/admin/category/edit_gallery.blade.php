@@ -50,7 +50,7 @@
                                 </div>
                                 
                             </div>
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="img_table">
                             <thead>
                                 <tr class="warning">
                                     <th>Sr.No.</th>
@@ -84,7 +84,7 @@
                                 }?>
                                 </tbody>
                             </table>
-                            {!! $gimg->withQueryString()->links('pagination::bootstrap-5') !!}
+                           
                             </div>
                             <div class="row">
                             <div class="col-12 col-md-6 col-lg-6">
@@ -126,7 +126,7 @@
     </section>
     <!-- /.content -->
     <script>
-      
+    
 $(document).ready(function () {
     $(".add-row").click(function(){
         $('.imagesnew').toggle();
@@ -135,7 +135,7 @@ $(document).ready(function () {
     $('.table-striped').on('click', '.delete-row', function () {
             $(this).closest('tr').remove();
     })
-
+    new DataTable('#img_table');
 
 });
       function removeImg(img, id){
