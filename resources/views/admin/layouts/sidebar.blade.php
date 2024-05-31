@@ -126,12 +126,12 @@
            </a>
          </li>
 
-         <li class="nav-item">
+         <!-- <li class="nav-item">
            <a href="{{ route('state_page.index') }}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>State Page</p>
            </a>
-         </li>
+         </li> -->
 
        </ul>
      </nav>
