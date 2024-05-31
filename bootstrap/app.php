@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthGuest;
 use App\Http\Middleware\AdminRedirect;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\AdminAuthenticate;
@@ -17,12 +18,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'AdminAuthenticate' => AdminAuthenticate::class,
+            'AuthGuest' => AuthGuest::class,
         ]);
 
-        $middleware->redirectTo(
-            guests: 'login',
-            users: 'dashboard',
-        );
+        // $middleware->redirectTo(
+        //     guests: 'login',
+        //     users: 'dashboard',
+        // );
 
     })
     ->withExceptions(function (Exceptions $exceptions) {

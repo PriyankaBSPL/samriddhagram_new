@@ -20,8 +20,9 @@
      <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
      
      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --> 
 </head>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 

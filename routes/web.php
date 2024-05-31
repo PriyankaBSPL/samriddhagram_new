@@ -21,51 +21,58 @@ use App\Http\Controllers\Admin\LatestTrainingImageController;
 use App\Http\Controllers\Admin\ProgramAndTrainingController;
 use App\Http\Controllers\Admin\StatePageController;
 
-Route::get('/', [IndexController::class, 'index']);
-Route::resource('/admin/slider', SliderController::class);
-Route::resource('/admin/category',CategoryController::class);
-Route::resource('/admin/gallery',GalleryController::class);
 
-
-Route::any('/category_image/delete/{id}', [AdminController::class,'delete_image']);
-Route::any('/category_image/update_image/', [AdminController::class,'update_image']);
-Route::any('/category_image/update_title/', [AdminController::class,'update_title']);
-
-Route::any('/category_image/add_image/', [AdminController::class,'add_image']);
-Route::any('admin/delete_gallery_images/', [AdminController::class,'delete_gallery_images']);
-Route::any('/admin/update_menu_orders/', [AdminController::class,'update_menu_orders']);
-//Route::any('/category_image/add_gallery_image/', [AdminController::class,'add_gallery_image']);
-
-Route::resource('/admin/menu', MenuController::class);
-
-Route::group(['prefix' => 'admin'], function () {
-    // Route::group(['middleware'=> 'admin'], function(){
+Route::group(['middleware' => 'AuthGuest'], function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    // });
-
-    Route::resource('/training', TrainingProgramController::class);
-    Route::resource('/youtube', YoutubeLinkController::class);
-    Route::resource('/home_gallery', HomeGalleryController::class);
-    Route::resource('/home_intro', HomeIntroController::class);
-    Route::resource('/program', ProgramController::class);
-    Route::resource('/home_banner', HomeBannerController::class);
-    Route::resource('/latest_training', LatestTrainingController::class);
-    Route::resource('/latest_training_image', LatestTrainingImageController::class);
-    Route::resource('/about', AboutController::class);
-    Route::resource('/state_page', StatePageController::class);
-    Route::resource('/program_and_training', ProgramAndTrainingController::class);
-
-
 });
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['middleware' => 'AdminAuthenticate'], function () {
+
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+
+        Route::resource('/training', TrainingProgramController::class);
+        Route::resource('/youtube', YoutubeLinkController::class);
+        Route::resource('/home_gallery', HomeGalleryController::class);
+        Route::resource('/home_intro', HomeIntroController::class);
+        Route::resource('/program', ProgramController::class);
+        Route::resource('/home_banner', HomeBannerController::class);
+        Route::resource('/latest_training', LatestTrainingController::class);
+        Route::resource('/latest_training_image', LatestTrainingImageController::class);
+        Route::resource('/about', AboutController::class);
+        Route::resource('/state_page', StatePageController::class);
+        Route::resource('/program_and_training', ProgramAndTrainingController::class);
+
+        Route::resource('/slider', SliderController::class);
+        Route::resource('/category', CategoryController::class);
+        Route::resource('/gallery', GalleryController::class);
+    });
+
+
+    Route::any('/category_image/delete/{id}', [AdminController::class, 'delete_image']);
+    Route::any('/category_image/update_image/', [AdminController::class, 'update_image']);
+    Route::any('/category_image/update_title/', [AdminController::class, 'update_title']);
+
+    Route::any('/category_image/add_image/', [AdminController::class, 'add_image']);
+    Route::any('admin/delete_gallery_images/', [AdminController::class, 'delete_gallery_images']);
+    Route::any('/admin/update_menu_orders/', [AdminController::class, 'update_menu_orders']);
+
+    Route::resource('/admin/menu', MenuController::class);
+});
+
+
+
+Route::get('/', [IndexController::class, 'index']);
 Route::get('/about', [IndexController::class, 'about']);
 Route::get('/program/{slug}/{id}', [IndexController::class, 'program']);
+
+Route::get('/contact-us', [IndexController::class, 'contact_us']);
+Route::post('contactsave', [IndexController::class, 'contactsave'])->name('contactsave');
+
 Route::get('/category/{slug}/{id}', [IndexController::class, 'category']);
 Route::get('/gallery/{id}', [IndexController::class, 'gallery']);
-Route::get('/agro-entrepreneurship-training-program', [IndexController::class, 'agro_entrepreneurship_training_program']);
-Route::get('/contact-us', [IndexController::class, 'contact_us']);
-// Route::get('/pages/{slug}', [IndexController::class, 'pages']);
-Route::post('contactsave', [IndexController::class, 'contactsave'])->name('contactsave');
+
+

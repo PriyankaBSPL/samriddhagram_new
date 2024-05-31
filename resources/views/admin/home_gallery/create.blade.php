@@ -69,6 +69,5 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
 @endsection

@@ -9,7 +9,7 @@
    <!-- Sidebar -->
    <div class="sidebar">
 
-     <!-- SidebarSearch Form -->
+     <!-- Sidebar Search Form -->
      <div class="form-inline">
        <div class="input-group" data-widget="sidebar-search">
          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -74,7 +74,7 @@
            </a>
          </li>
 
-         
+
 
          <li class="nav-item">
            <a href="{{ route('latest_training.index') }}" class="nav-link">
@@ -117,7 +117,7 @@
            </a>
          </li>
 
-        
+
 
          <li class="nav-item">
            <a href="{{ route('about.index') }}" class="nav-link">
@@ -126,12 +126,12 @@
            </a>
          </li>
 
-         <li class="nav-item">
+         <!-- <li class="nav-item">
            <a href="{{ route('state_page.index') }}" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>State Page</p>
            </a>
-         </li>
+         </li> -->
 
        </ul>
      </nav>

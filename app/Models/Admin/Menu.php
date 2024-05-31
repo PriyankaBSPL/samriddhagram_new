@@ -24,4 +24,5 @@ class Menu extends Model
     public function subMenu() {
         return $this->hasMany(Menu::class, 'parent_id');
     }
+    
 }

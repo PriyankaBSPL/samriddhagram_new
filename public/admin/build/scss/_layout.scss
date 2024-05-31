@@ -500,6 +500,8 @@ body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) {
 
 .content-wrapper {
   background-color: $main-bg;
+  overflow-y: auto !important;
+
 
   > .content {
     padding: $content-padding-y $content-padding-x;

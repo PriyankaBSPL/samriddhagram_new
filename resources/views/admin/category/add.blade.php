@@ -72,15 +72,15 @@
                   @endif
                 </div>
                 <div class="form-group">
-                <h5>Maximum 15 image upload at a time</h5>
+                  <h5>Maximum 15 image upload at a time</h5>
                   <label for="exampleInputPassword1">Multiple Image</label>
                   <span style="color: red;" class="star">*</span>
                   <input type="file" class="form-control" id="thumbnail_img" name="image[]" multiple onchange="multiple_maxfilesize(this)">
                   <span class="thumbnail_img_error" style="color:red;"></span>
 
-</div>
-           
-                 
+                </div>
+
+
                 <!-- /.card-body -->
 
                 <div class="card-footer">
@@ -103,6 +103,6 @@
 
 
 
+</div>
 
-
-  @endsection
+@endsection
