@@ -29,7 +29,7 @@ class GalleryController extends Controller
             'menus.title as menu_name'
           //  'category_images.id as category_img_id'
         )
-        ->orderBy('galleries.id','DESC')->paginate('20');
+        ->orderBy('galleries.id','DESC')->get();
     //    echo "<pre>";
     //    print_r($data);
     //    echo "</pre>";
@@ -108,7 +108,7 @@ class GalleryController extends Controller
         $id=clean_single_input($id);
         $title='Edit Gallery';
         $data=Gallery::find($id);
-        $gimg =  GalleryImage::where('gallery_id',$id)->paginate(20);
+        $gimg =  GalleryImage::where('gallery_id',$id)->get();
         return view('admin.category.edit_gallery',compact('data','title','gimg'));
     }
 

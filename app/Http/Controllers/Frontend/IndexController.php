@@ -18,7 +18,10 @@ use App\Models\Admin\ProgramAndTraining;
 use App\Models\Admin\LatestTrainingImage;
 use App\Models\Admin\Menu;
 use App\Models\Admin\Program;
+use App\Models\Admin\Gallery;
 
+use App\Models\Admin\Category;
+use App\Models\Admin\CategoryImage;
 class IndexController extends Controller
 {
     //
@@ -65,6 +68,23 @@ class IndexController extends Controller
          $programs = Program::with('menu')->where('page_title', $id)->orderBy('id', 'DESC')->get();
         return view('frontend.program', compact('programs'));
     }
+    public function category($slug,$id)
+    {
+        $data = Menu::where('id', $id)->first();
+        $title=$data->title;
+        $gallery = Category::where('type', $id)->get();
+        return view('frontend.category', compact('gallery','title'));
+    }
+    public function gallery($id)
+    {
+    
+        $data = Gallery::where('cat_img_id', $id)->get();
+        $category_img_data = CategoryImage::where('id', $id)->first();
+        $category_data = Category::where('id', $category_img_data->cat_id)->first();
+        $title=$category_img_data->title;
+        return view('frontend.gallery', compact('data','title'));
+    }
+
 
     public function contact_us()
     {

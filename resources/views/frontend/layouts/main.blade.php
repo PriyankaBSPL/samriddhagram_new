@@ -73,32 +73,56 @@
             @foreach (getMenuData(0) as $menuItem)
             @if($menuItem->subMenu && $menuItem->subMenu->count() > 0)
             <li>
-              <a href="#">{{ $menuItem->title }}</a>
+              <a href="#"> {{ $menuItem->title }}</a>
               <ul class="nav-dropdown">
                 @foreach (getMenuData($menuItem->id) as $child)
                 <li>
-                  <a href="{{ url($child->slug) }}">{{ $child->title }}</a>
+                   <a href="{{ url($child->slug) }}">{{ $child->title }}</a>
+                  <!-- <a href="{{ url($child->slug) }}">{{ $child->title }}</a>
+                  @if($menuItem->title == 'Gallery')
+                  <a href="{{ url('category/'.$child->slug.'/'.$child->id) }}">{{ $child->title }}</a>
+                  @elseif($menuItem->title == 'Program')
+                  <a href="{{ url('program/'.$child->slug.'/'.$child->id) }}">{{ $child->title }}</a>
+                  @elseif($menuItem->title == 'Other')
+                  <a href="{{ url('pages/'.$child->slug) }}">{{ $child->title }}</a>
+                  @endif -->
+
                   @if($child->subMenu && $child->subMenu->count() > 0)
                   <ul class="nav-dropdown">
                     @foreach (getMenuData($child->id) as $subChild)
                     <li>
-                     
-                      @if($subChild->type == 'Program' && $subChild->slug !== '#')
+                      <!-- @if($subChild->type == 'Program' && $subChild->slug !== '#')
                       <a href="{{ url('program/'.$subChild->slug.'/'.$subChild->id ) }}">{{ $subChild->title }}</a>
                       @else
                       <a href="{{ url($subChild->slug) }}">{{ $subChild->title }}</a>
+                      @endif -->
+
+                      @if($subChild->type == 'Gallery')
+                      <a href="{{ url('category/'.$subChild->slug.'/'.$subChild->id) }}">{{ $subChild->title }}</a>
+                      @elseif($subChild->type == 'Program' && $subChild->slug !== '#')
+                      <a href="{{ url('program/'.$subChild->slug.'/'.$subChild->id) }}">{{ $subChild->title }}</a>
+                      @else
+                      <a href="{{ url($subChild->slug) }}">{{ $subChild->title }}</a>
                       @endif
+
 
                       @if($subChild->subMenu && $subChild->subMenu->count() > 0)
                       <ul class="nav-dropdown">
                         @foreach (getMenuData($subChild->id) as $lastChild)
                         <li>
-                          @if($lastChild->type == 'Program')
+                          <!-- @if($lastChild->type == 'Program')
                           <a href="{{ url('program/'.$lastChild->slug.'/'.$lastChild->id ) }}">{{ $lastChild->title }}</a>
                           @else
                           <a href="{{ url($lastChild->slug) }}">{{ $lastChild->title }}</a>
+                          @endif -->
+                        <li>
+                          @if($lastChild->type == 'Gallery')
+                          <a href="{{ url('category/'.$lastChild->slug.'/'.$lastChild->id) }}">{{ $lastChild->title }}</a>
+                          @elseif($lastChild->type == 'Program')
+                          <a href="{{ url('program/'.$lastChild->slug.'/'.$lastChild->id) }}">{{ $lastChild->title }}</a>
+                          @elseif($lastChild->type == 'Other')
+                          <a href="{{ url($lastChild->slug) }}">{{ $lastChild->title }}</a>
                           @endif
-                          <!-- <a href="{{ url($lastChild->slug) }}">{{ $lastChild->title }}</a> -->
                         </li>
                         @endforeach
                       </ul>
@@ -125,86 +149,6 @@
         $currentUrl = $_SERVER['REQUEST_URI'];
 
         ?>
-        <!-- <div class="nav-menus-wrapper">
-          <ul class="nav-menu align-to-right">
-            <li><a class="nav-link <?= strpos($currentUrl, 'index.php') !== false ? 'active' : '' ?>" href="index.php">Home</a></li>
-            <li><a class="nav-link <?= strpos($currentUrl, 'about-us.php') !== false ? 'active' : '' ?>" href="about-us.php">About</a></li>
-            
-            <li>
-              <a href="#">Program</a>
-              <ul class="nav-dropdown">
-                <li>
-                  <a href="#">Farm Sector</a>
-                  <ul class="nav-dropdown">
-
-                    <li><a href="agro-entrepreneurship-training-program.php">Agro Entrepreneurship Training Program</a>
-                    </li>
-                    <li><a href="beekeeping-honey-traceability-mechanism.php">Bee Keeping & Honey Traceability
-                        Mechanism</a></li>
-                    <li><a href="drone-technology-on-crop-acreage-mapping.php">Drone Technology on Crop Acreage
-                        Mapping</a></li>
-                    <li><a href="millets-training-program.php">Millets Training Program</a></li>
-                    <li><a href="medicinal-plant-cultivation-marketing.php">Medicinal Plants Cultivation & Marketing</a>
-                    </li>
-                    <li><a href="milk-adulterant-mapping.php">Milk Adulterant Mapping</a></li>
-                    <li><a href="natural-farming.php">Natural Farming</a></li>
-                    <li><a href="organic-farming.php">Organic Farming</a></li>
-                    <li><a href="pesticide-residue-mapping.php">Pesticide Residue Mapping</a></li>
-                    <li><a href="self-sustainable-model-of-gaushala.php">Self-Sustainable Model of Gaushala</a></li>
-                    <li><a href="soil-testing-fertilizer-recommendation-dkd.php"> Soil Testing & Fertilizer
-                        Recommendation (DKD)</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">Non-Farm Sector</a>
-                  <ul class="nav-dropdown">
-                    <li><a href="ayurveda-and-primary-health-care-training-program.php">Ayurveda & Primary Healthcare
-                        Training Program</a></li>
-                    <li><a href="agro-eco-wellness-tourism-program.php">Agro Eco Wellness Tourism Program</a></li>
-
-                    <li>
-                      <a href="#">QA and QC Training Program</a>
-                      <ul class="nav-dropdown">
-                        <li><a href="qa-and-qc-training-program-fmcg.php"> QA & QC Training Program: FMCG</a></li>
-                        <li><a href="qa-and-training-program-handloom.php">QA & QC Training Program: Handloom</a></li>
-                        <li><a href="qa-and-training-program-handicraft.php">QA & QC Training Program: Handicraft</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a href="end-to-end-business-support-system.php">End-to-End Business Support System</a> </li>
-                    <li><a href="electronic-marketing-and-digital-marketing-hyperlocal-marketing.php">E-Marketing & Digital
-                        Marketing</a></li>
-                    <li><a href="rural-entrepreneurship-and-digital-marketing-program.php">Rural Entrepreneurship &
-                        Digital Marketing Program</a></li>
-                    <li><a href="stock-inventory-management-bpos.php">Stock & Inventory Management System (B-POS)</a>
-                    </li>
-                    <li><a href="yoga-training-program.php">Yoga Training Program</a></li>
-
-                  </ul>
-                </li>
-
-
-              </ul>
-            </li>
-            <li>
-              <a href="#">Gallery</a>
-              <ul class="nav-dropdown">
-                <li><a href="training-program-assam.php">Training Program Assam</a></li>
-                <li><a href="training-program-hp.php">Training Program Himachal Pradesh</a></li>
-                <li><a href="training-program-meghalya.php">Training Program Meghalaya</a></li>
-                <li><a href="training-program-mp.php">Training Program Madhya Pradesh</a></li>
-                <li><a href="training-program-punjab.php">Training Program Punjab</a></li>
-                <li><a href="training-program-uttarakhand.php">Training Program Uttarakhand</a></li>
-                <li><a href="samridha-gram-training-center.php">Samriddha Gram Patanjali Training Center</a></li>
-              </ul>
-            </li>
-
-            <li><a class="nav-link" href="#">Media</a></li>
-            <li><a class="nav-link <?= strpos($currentUrl, 'state-pages.php') !== false ? 'active' : '' ?>" href="state-pages.php">State Pages</a></li>
-            <li><a class="nav-link <?= strpos($currentUrl, 'contact-us.php') !== false ? 'active' : '' ?>" href="contact-us.php">Contact</a></li>
-          </ul>
-        </div> -->
-
 
       </nav>
 
