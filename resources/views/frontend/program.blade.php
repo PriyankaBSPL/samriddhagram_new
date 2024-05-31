@@ -13,25 +13,7 @@
 
 <body>
     <main class="internal-pages">
-        <!-- @if($programs->count() > 0)
 
-        <section class="internal-banner-slide">
-            <div class="container">
-                <h1>{{ $programs->first()->menu->title }}</h1>
-            </div>
-        </section>
-
-        <section class="dharti-ka-doctor">
-            <div class="container">
-                @foreach($programs as $program)
-                <p>{!! $program->full_description !!}</p>
-                @endforeach
-            </div>
-        </section>
-
-        @else
-        <p>No programs found.</p>
-        @endif -->
 
         @if($programs->count() > 0)
         <section class="internal-banner-slide">

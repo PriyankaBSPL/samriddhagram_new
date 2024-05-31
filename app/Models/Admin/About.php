@@ -18,4 +18,9 @@ class About extends Model
         'image',
         'description',
     ];
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
 }

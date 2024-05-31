@@ -77,18 +77,28 @@
               <ul class="nav-dropdown">
                 @foreach (getMenuData($menuItem->id) as $child)
                 <li>
-                  <a href="{{ $child->slug }}">{{ $child->title }}</a>
+                  <a href="{{ url($child->slug) }}">{{ $child->title }}</a>
                   @if($child->subMenu && $child->subMenu->count() > 0)
                   <ul class="nav-dropdown">
                     @foreach (getMenuData($child->id) as $subChild)
                     <li>
-                      <a href="{{ $subChild->slug }}">{{ $subChild->title }}</a>
+                     
+                      @if($subChild->type == 'Program' && $subChild->slug !== '#')
+                      <a href="{{ url('program/'.$subChild->slug.'/'.$subChild->id ) }}">{{ $subChild->title }}</a>
+                      @else
+                      <a href="{{ url($subChild->slug) }}">{{ $subChild->title }}</a>
+                      @endif
 
                       @if($subChild->subMenu && $subChild->subMenu->count() > 0)
                       <ul class="nav-dropdown">
                         @foreach (getMenuData($subChild->id) as $lastChild)
                         <li>
-                          <a href="{{ $lastChild->slug }}">{{ $lastChild->title }}</a>
+                          @if($lastChild->type == 'Program')
+                          <a href="{{ url('program/'.$lastChild->slug.'/'.$lastChild->id ) }}">{{ $lastChild->title }}</a>
+                          @else
+                          <a href="{{ url($lastChild->slug) }}">{{ $lastChild->title }}</a>
+                          @endif
+                          <!-- <a href="{{ url($lastChild->slug) }}">{{ $lastChild->title }}</a> -->
                         </li>
                         @endforeach
                       </ul>
@@ -103,13 +113,12 @@
             </li>
             @else
             <li>
-              <a class="nav-link {{ Request::is($menuItem->slug) ? 'active' : '' }}" href="{{ $menuItem->slug }}">{{ $menuItem->title }}</a>
+              <a class="nav-link {{ Request::is($menuItem->slug) ? 'active' : '' }}" href="{{ url($menuItem->slug) }}">{{ $menuItem->title }}</a>
             </li>
             @endif
             @endforeach
           </ul>
         </div>
-
 
         <?php
         // Get the current page URL

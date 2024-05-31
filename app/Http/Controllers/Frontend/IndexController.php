@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Admin\TrainingProgram;
 use App\Models\Admin\ProgramAndTraining;
 use App\Models\Admin\LatestTrainingImage;
+use App\Models\Admin\Menu;
 use App\Models\Admin\Program;
 
 class IndexController extends Controller
@@ -52,14 +53,15 @@ class IndexController extends Controller
     }
 
     public function about()
-    {
-        $abouts = About::all();
-        return view('frontend.about-us', compact('abouts'));
+    {      
+        $banner_images = Menu::where('slug','about')->first();
+        $banner_image = $banner_images->banner_image;
+         $abouts = About::with('menu')->get();
+        return view('frontend.about-us', compact('abouts','banner_image'));
     }
 
     public function program($slug,$id)
     {
-        // $programs = Program::where('page_title',$id)->get();
          $programs = Program::with('menu')->where('page_title', $id)->orderBy('id', 'DESC')->get();
         return view('frontend.program', compact('programs'));
     }

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="overflow-y: auto;">
 
     <section class="content-header">
         <div class="container-fluid">
@@ -98,7 +98,6 @@
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content -->
 
 <script>
     $(document).ready(function() {

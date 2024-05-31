@@ -21,8 +21,16 @@ body.iframe-mode-fullscreen {
   }
 }
 
+
+.content-wrapper{
+  overflow-y: auto;
+}
+
+
 .content-wrapper {
   height: 100%;
+
+
 
   &.iframe-mode {
     .btn-iframe-close {

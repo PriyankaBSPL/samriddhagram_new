@@ -85,7 +85,7 @@
                   <span class="text-danger">{{ $errors->first('menu_position') }}</span>
                   @endif
                 </div>
-                
+
                 <div class="form-group">
                   <label for="exampleInputEmail1">Select Type</label>
                   <span style="color: red;" class="star">*</span>

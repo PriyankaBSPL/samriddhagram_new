@@ -93,8 +93,6 @@
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content -->
-
 <script>
     $(document).ready(function() {
         new DataTable('#homebannertable');

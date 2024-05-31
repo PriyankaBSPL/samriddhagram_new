@@ -161,7 +161,7 @@
         <div class="row align-items-center">
 
           <div class="col-lg-6">
-            <img src="assets/img/about-samridh-gram.webp">
+          <img src="{{ URL::asset('/admin/uploads/banner_image/' . $banner_image) }}">
           </div>
 
           <div class="col-lg-6">
@@ -183,6 +183,7 @@
 
           <div class="col-lg-5">
             <img src="{{URL::asset('/admin/upload/About/' .$about->image)}}">
+            <!--  -->
           </div>
         </div>
 
