@@ -53,7 +53,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.php"><img src="{{URL::asset('frontend/assets/img/Samridh-Gram-LOGO.webp')}}" class="img-fluid animated" alt=""></a></h1>
+        <h1><a href="{{url('/')}}"><img src="{{URL::asset('frontend/assets/img/Samridh-Gram-LOGO.webp')}}" class="img-fluid animated" alt=""></a></h1>
       </div>
 
       <nav id="navigation1" class="navigation">
