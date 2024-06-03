@@ -22,6 +22,8 @@ use App\Models\Admin\Gallery;
 use App\Models\Admin\Slider;
 use App\Models\Admin\Category;
 use App\Models\Admin\CategoryImage;
+use App\Models\Admin\PopUp;
+
 class IndexController extends Controller
 {
     //
@@ -41,10 +43,10 @@ class IndexController extends Controller
         $home_gallerys = HomeGallery::where('type', 1)->orderBy('id', 'DESC')->get();
         $partners = HomeGallery::where('type', 2)->orderBy('id', 'DESC')->get();
         $youtubes = YoutubeLink::orderBy('id', 'DESC')->get();
+
+        $popups = PopUp::all();
         $sliders = Slider::where('status',3)->orderBy('id', 'DESC')->get();
-        // echo "<pre>";
-        // print_r( $slider);
-        // exit;
+
         return view('frontend/index', compact(
             'home_banners',
             'home_intros',
@@ -55,7 +57,9 @@ class IndexController extends Controller
             'home_gallerys',
             'partners',
             'youtubes',
+            'popups'
             'sliders'
+
         ));
     }
 
@@ -128,5 +132,11 @@ class IndexController extends Controller
 
         return back()->with('success', $msg);
     }
+
+    public function state_pages()
+    {      
+        return view('frontend.state-pages');
+    }
+
 
 }

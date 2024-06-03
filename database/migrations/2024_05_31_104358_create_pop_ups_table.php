@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('galleries', function (Blueprint $table) {
-            $table->string('cat_img_id')->nullable()->after('cat_id');
+        Schema::create('pop_ups', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('design_type');
+            $table->longText('description')->nullable();
+            $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('galleries', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('pop_ups');
     }
 };
