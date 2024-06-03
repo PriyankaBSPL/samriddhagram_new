@@ -1,3 +1,6 @@
+@extends('frontend.layouts.main')
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +11,7 @@
   <title>State</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <link href="assets/img/favicon.webp" rel="icon">
+  <link href="{{URL::asset('frontend/assets/img/favicon.webp')}}" rel="icon">
   <style>
     #map svg {
       height: 700px !important;
@@ -23,8 +26,6 @@
 </head>
 
 <body>
-
-  <?php require_once('header.php') ?>
 
   <main class="internal-pages">
     <section class="internal-banner-slide">
@@ -45,13 +46,8 @@
 
         <div id="map" style="text-align:center;"></div>
     </section>
-    <script src="assets/js/mapdata.js"></script>
-    <script src="assets/js/countrymap.js"></script>
+    <script src="{{URL::asset('frontend/assets/js/mapdata.js')}}"></script>
+    <script src="{{URL::asset('frontend/assets/js/countrymap.js')}}"></script>
   </main>
-
-  <?php require_once('footer.php') ?>
-  <!-- ======= Footer ======= -->
-
 </body>
-
-</html>
+@endsection

@@ -16,7 +16,39 @@
 
 <body>
   <!-- on-load popup -->
+
+
   <div class="on-load">
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+
+
+      @foreach($popups as $popup)
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel" style="text-align:center;width: 100%;margin-bottom: 10px;">{{$popup->title}}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="height:auto!important;">
+            <div class="row">
+              <div class="col-md-12">
+
+              @if($popup->design_type == 1)
+                <p style="font-size:17px;line-height:27px;"> {!! $popup->description !!}</p>
+               @else
+               <img src="{{URL::asset('/admin/upload/PopUp/' .$popup->image)}}"> 
+                @endif
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+@endforeach
+      </div>
+    </div>
+  </div>
+  <!-- <div class="on-load">
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
 
@@ -44,7 +76,7 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <!-- ======= Hero Section ======= -->

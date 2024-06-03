@@ -18,9 +18,9 @@ use App\Http\Controllers\Admin\YoutubeLinkController;
 use App\Http\Controllers\Admin\LatestTrainingController;
 use App\Http\Controllers\Admin\TrainingProgramController;
 use App\Http\Controllers\Admin\LatestTrainingImageController;
+use App\Http\Controllers\Admin\PopUpController;
 use App\Http\Controllers\Admin\ProgramAndTrainingController;
 use App\Http\Controllers\Admin\StatePageController;
-
 
 Route::group(['middleware' => 'AuthGuest'], function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -43,7 +43,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/latest_training', LatestTrainingController::class);
         Route::resource('/latest_training_image', LatestTrainingImageController::class);
         Route::resource('/about', AboutController::class);
-        Route::resource('/state_page', StatePageController::class);
+        // Route::resource('/state_page', StatePageController::class);
+        Route::resource('/popup', PopUpController::class);
         Route::resource('/program_and_training', ProgramAndTrainingController::class);
 
         Route::resource('/slider', SliderController::class);
@@ -68,6 +69,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/about', [IndexController::class, 'about']);
 Route::get('/program/{slug}/{id}', [IndexController::class, 'program']);
+Route::get('/state-pages', [IndexController::class, 'state_pages']);
 
 Route::get('/contact-us', [IndexController::class, 'contact_us']);
 Route::post('contactsave', [IndexController::class, 'contactsave'])->name('contactsave');

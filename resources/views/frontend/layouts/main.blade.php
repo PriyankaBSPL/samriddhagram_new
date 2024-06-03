@@ -53,7 +53,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.php"><img src="{{URL::asset('frontend/assets/img/Samridh-Gram-LOGO.webp')}}" class="img-fluid animated" alt=""></a></h1>
+        <h1><a href="{{url('/')}}"><img src="{{URL::asset('frontend/assets/img/Samridh-Gram-LOGO.webp')}}" class="img-fluid animated" alt=""></a></h1>
       </div>
 
       <nav id="navigation1" class="navigation">
@@ -181,7 +181,7 @@
 
         <div class="row">
           <div class="col-lg-4 col-12 white-bg pt-3 fotter-left">
-            <a class="footer-logo" href="index.php">
+            <a class="footer-logo" href="{{url('/')}}">
               <img class="img-fluid" src="{{URL::asset('frontend/assets/img/Samridh-Gram-LOGO.webp')}}">
             </a>
             <p class="my-2">At the Samriddha Gram Patanjali Training Centre, we empower Self-Help Groups (SHGs) across India through training programs under the National Rural Livelihoods Mission (NRLM). Our comprehensive courses equip SHGs with essential skills, fostering economic independence and sustainable livelihoods, thereby contributing to the socio-economic development of rural communities nationwide.</p>
