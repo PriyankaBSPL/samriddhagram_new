@@ -7,22 +7,22 @@
 
 
   <!-- Google Fonts -->
-  <script type="module" src="{{URL::asset('frontend/assets/js/ionicons.esm.js')}}"></script>
-  <script nomodule src="{{URL::asset('frontend/assets/js/ionicons.js')}}"></script>
+  <script type="module" src="{{URL::asset('public/frontend/assets/js/ionicons.esm.js')}}"></script>
+  <script nomodule src="{{URL::asset('public/frontend/assets/js/ionicons.js')}}"></script>
   <!-- Vendor CSS Files -->
-  <link href="{{URL::asset('frontend/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('frontend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('frontend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('frontend/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('frontend/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-  <link href="{{URL::asset('frontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
   <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css'> -->
   <!-- Template Main CSS File -->
 
-  <link href="{{URL::asset('frontend/assets/css/style.css?v=1.1')}}" rel="stylesheet">
-  <link href="{{URL::asset('frontend/assets/css/font-family.css')}}" rel="stylesheet">
-  <script src="{{URL::asset('frontend/assets/js/jquery-3.6.4.min.js')}}"></script>
+  <link href="{{URL::asset('public/frontend/assets/css/style.css?v=1.1')}}" rel="stylesheet">
+  <link href="{{URL::asset('public/frontend/assets/css/font-family.css')}}" rel="stylesheet">
+  <script src="{{URL::asset('public/frontend/assets/js/jquery-3.6.4.min.js')}}"></script>
   <script>
     $(document).ready(function() {
       $('#navbar .nav-link').on('click', function() {
@@ -53,7 +53,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="{{url('/')}}"><img src="{{URL::asset('frontend/assets/img/Samridh-Gram-LOGO.webp')}}" class="img-fluid animated" alt=""></a></h1>
+        <h1><a href="{{url('/')}}"><img src="{{URL::asset('public/frontend/assets/img/Samridh-Gram-LOGO.webp')}}" class="img-fluid animated" alt=""></a></h1>
       </div>
 
       <nav id="navigation1" class="navigation">
@@ -77,15 +77,15 @@
               <ul class="nav-dropdown">
                 @foreach (getMenuData($menuItem->id) as $child)
                 <li>
-                   <a href="{{ url($child->slug) }}">{{ $child->title }}</a>
-                  <!-- <a href="{{ url($child->slug) }}">{{ $child->title }}</a>
+                   <!-- <a href="{{ url($child->slug) }}">{{ $child->title }}</a> -->
+                  <!-- <a href="{{ url($child->slug) }}">{{ $child->title }}</a> -->
                   @if($menuItem->title == 'Gallery')
                   <a href="{{ url('category/'.$child->slug.'/'.$child->id) }}">{{ $child->title }}</a>
                   @elseif($menuItem->title == 'Program')
                   <a href="{{ url('program/'.$child->slug.'/'.$child->id) }}">{{ $child->title }}</a>
                   @elseif($menuItem->title == 'Other')
                   <a href="{{ url('pages/'.$child->slug) }}">{{ $child->title }}</a>
-                  @endif -->
+                  @endif
 
                   @if($child->subMenu && $child->subMenu->count() > 0)
                   <ul class="nav-dropdown">
@@ -182,7 +182,7 @@
         <div class="row">
           <div class="col-lg-4 col-12 white-bg pt-3 fotter-left">
             <a class="footer-logo" href="{{url('/')}}">
-              <img class="img-fluid" src="{{URL::asset('frontend/assets/img/Samridh-Gram-LOGO.webp')}}">
+              <img class="img-fluid" src="{{URL::asset('public/frontend/assets/img/Samridh-Gram-LOGO.webp')}}">
             </a>
             <p class="my-2">At the Samriddha Gram Patanjali Training Centre, we empower Self-Help Groups (SHGs) across India through training programs under the National Rural Livelihoods Mission (NRLM). Our comprehensive courses equip SHGs with essential skills, fostering economic independence and sustainable livelihoods, thereby contributing to the socio-economic development of rural communities nationwide.</p>
 
@@ -255,16 +255,16 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{{URL::asset('frontend/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-  <script src="{{URL::asset('frontend/assets/vendor/aos/aos.js')}}"></script>
-  <script src="{{URL::asset('frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{URL::asset('frontend/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-  <script src="{{URL::asset('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-  <script src="{{URL::asset('frontend/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{URL::asset('frontend/assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/vendor/php-email-form/validate.js')}}"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{URL::asset('frontend/assets/js/main.js')}}"></script>
+  <script src="{{URL::asset('public/frontend/assets/js/main.js')}}"></script>
 
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src='https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'></script>

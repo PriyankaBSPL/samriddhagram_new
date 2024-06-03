@@ -32,7 +32,7 @@ if(check_category_image($row->id))
                    <div class="col-lg-4">
                   <div class="gallery-traing">
                      <a href="{{url('gallery/'.$img->id)}}"> 
-                     <img src="{{ URL::asset('/admin/uploads/category_image/'.$img->image)}}"  alt="">
+                     <img src="{{ URL::asset('/public/admin/uploads/category_image/'.$img->image)}}"  alt="">
                     
                           </a>
                   </div>
@@ -41,11 +41,11 @@ if(check_category_image($row->id))
    <div class="col-lg-3 col-md-3 portfolio-item">
                      <div class="portfolio-wrap">
                      <a href="#">
-                        <img src="{{ URL::asset('/admin/uploads/category_image/'.$img->image)}}" class="img-fluid" alt="" data-pagespeed-url-hash="2411853377" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                        <img src="{{ URL::asset('/public/admin/uploads/category_image/'.$img->image)}}" class="img-fluid" alt="" data-pagespeed-url-hash="2411853377" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                         </a>
                         <div class="portfolio-info">
                            <div class="portfolio-links">
-                              <a href="{{ URL::asset('/admin/uploads/category_image/'.$img->image)}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bi bi-plus"></i></a>
+                              <a href="{{ URL::asset('/public/admin/uploads/category_image/'.$img->image)}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bi bi-plus"></i></a>
 
                            </div>
                         </div>

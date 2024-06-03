@@ -34,10 +34,10 @@
          ?>
             <div class="col-lg-3 col-md-3 portfolio-item">
               <div class="portfolio-wrap">
-                <img src="{{ URL::asset('/admin/uploads/gallery_image/'.$img->image)}}" class="img-fluid" alt="">
+                <img src="{{ URL::asset('/public/admin/uploads/gallery_image/'.$img->image)}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <div class="portfolio-links">
-                    <a href="{{ URL::asset('/admin/uploads/gallery_image/'.$img->image)}}"
+                    <a href="{{ URL::asset('/public/admin/uploads/gallery_image/'.$img->image)}}"
                       data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bi bi-plus"></i></a>
                   </div>
                 </div>

@@ -57,7 +57,7 @@ class IndexController extends Controller
             'home_gallerys',
             'partners',
             'youtubes',
-            'popups'
+            'popups',
             'sliders'
 
         ));

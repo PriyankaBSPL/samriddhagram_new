@@ -8,7 +8,7 @@
     <title>Samriddhagram: Agro Entrepreneurship Training Program</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-    <link href="{{ asset('assets/img/favicon.webp') }}" rel="icon">
+    <link href="{{ asset('public/assets/img/favicon.webp') }}" rel="icon">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 
                     @if(!empty($program->image))
                     <div class="col-lg-5">
-                        <img src="{{URL::asset('/admin/upload/Program/' .$program->image)}}">
+                        <img src="{{URL::asset('/public/admin/upload/Program/' .$program->image)}}">
                     </div>
                     @endif
 

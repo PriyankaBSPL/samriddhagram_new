@@ -8,7 +8,7 @@
   <title>Samriddhagram: About Us</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <link href="{{URL::asset('frontend/assets/img/favicon.webp')}}" rel="icon">
+  <link href="{{URL::asset('public/frontend/assets/img/favicon.webp')}}" rel="icon">
 
 </head>
 
@@ -21,7 +21,7 @@
         <div class="row align-items-center">
 
           <div class="col-lg-6">
-          <img src="{{ URL::asset('/admin/uploads/banner_image/' . $banner_image) }}">
+          <img src="{{ URL::asset('/public/admin/uploads/banner_image/' . $banner_image) }}">
           </div>
 
           <div class="col-lg-6">
@@ -42,7 +42,7 @@
           </div>
 
           <div class="col-lg-5">
-            <img src="{{URL::asset('/admin/upload/About/' .$about->image)}}">
+            <img src="{{URL::asset('/public/admin/upload/About/' .$about->image)}}">
           </div>
         </div>
 
