@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-
+        Route::resource('/menu', MenuController::class);
         Route::resource('/training', TrainingProgramController::class);
         Route::resource('/youtube', YoutubeLinkController::class);
         Route::resource('/home_gallery', HomeGalleryController::class);
@@ -61,7 +61,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::any('admin/delete_gallery_images/', [AdminController::class, 'delete_gallery_images']);
     Route::any('/admin/update_menu_orders/', [AdminController::class, 'update_menu_orders']);
 
-    Route::resource('/admin/menu', MenuController::class);
+  
 });
 
 
