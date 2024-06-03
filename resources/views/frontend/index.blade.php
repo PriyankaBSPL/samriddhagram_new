@@ -49,76 +49,24 @@
 
   <!-- ======= Hero Section ======= -->
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php
+foreach($sliders as $slider2){
+?>
+  <div class="modal fade" id="exampleModal{{$slider2->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLabel">Comprehensive support to women-led SHGs</h3>
+          <h3 class="modal-title"><?=$slider2->title?></h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>Samriddha Gram has been supporting women-led SHGs since its inception. Under the National Rural Development
-            Mission, it has connected with numerous SHGs in different states of India and catered to their empowerment
-            needs. It understands the importance of restructuring self-help groups at their core so they embrace
-            entrepreneurship. The NRO (National Resource Organization) wants women to lead this positive change in rural
-            India. Thus, women-led SHGs are its top priority, and their growth is its goal.</p>
-
-          <h4>How do SHGs work?</h4>
-          <p>SHGs are grassroots-level organizations aiming to nurture their members' collective socio-economic status.
-            They are either focused on eradicating common problems or improving their living standards. These voluntary
-            groups comprise 18-25 women who help the organization function. SHGs greatly help rural communities as their
-            members are the direct beneficiaries of their efforts.</p>
-          <h4>How does Samriddha Gram help?</h4>
-          <p>Samriddha Gram follows a clinical strategy in helping women-led SHGs. It provides them with the correct
-            tools, resources, and information to achieve their targets. Moreover, it focuses on developing an
-            enterprising system where individuals are more inclined towards doing business. It is helping SHGs connect
-            with distant markets where they find the right customers and earn regular profits. The NRO is not only
-            creating skilled workers but entrepreneurs who drive the economic success of their community.</p>
-          <p>Its contribution can be analyzed by all the training and programs taking care of the upliftment of
-            women-led SHGs. Samriddha Gram is the precursor of sustainability and strength among SHGs while being a
-            friendly reminder of the capabilities of rural India.</p>
+        {!!$slider2->description!!}
         </div>
 
       </div>
     </div>
   </div>
-
-
-  <div class="modal fade" id="exampleModal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Skill development on scientific grounds</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Samriddha Gram is focused on using science as the foundation for skill development among women-led SHGs. It
-            acknowledges the unique requirements of rural regions in creating productive individuals. Being true to the
-            nature of the village lifestyle, it understands the need to educate the masses through the essence of
-            familiarity. Therefore, it works for skill development in organic farming, animal husbandry, food and dairy,
-            soil testing, yoga, and rural tourism.</p>
-          <h4>Our functions</h4>
-          <p>The NRO undertakes the arduous task of enlightening communities about the best practices in various
-            economic fields. It teaches individuals the science behind “why something works?” and “how can it work
-            better?”. For instance, the act of soil testing is helping farmers understand their soil’s actual
-            personality. It provides exact data so they can make informed decisions for the best possible outcomes. This
-            otherwise ignored aspect of farming has helped people develop a scientific attitude instead of leaving
-            harvest on ignorant speculation.</p>
-          <h4>Our contribution</h4>
-          <p>It is not rocket science, but it matters! Samriddha Gram envisions training rural individuals in various
-            fields closely connected to village life. It has launched strategic programs in food and dairy training,
-            organic farming, soil testing, etc. while decoding the science behind its optimal practices. The “Dharti ka
-            Doctor” is one such initiative that imparts self-sufficiency among farmers with the help of science and
-            technology. Notably, the focus on Yogic science, highest quality dairy production, sustainable agriculture,
-            and animal husbandry also impacts the outlook of rural SHGs.</p>
-          <p>Samriddha Gram is working tirelessly to connect Indian villages with modern scientific literature so they
-            understand the cause-and-effect relationship of their activities.</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+<?php }?>
 
   <div class="home-banner">
     <div class="video-wrapper">
@@ -177,16 +125,19 @@
       <div class="container">
 
         <div class="custom-slider">
+          <?php
+           foreach($sliders as $slider){
+          ?>
           <div class="custom-box">
-            <img src="{{URL::asset('frontend/assets/img/comprehensive-support.webp')}}">
-            <h5 style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprehensive support to
-              women-led SHGs </h5>
+            <img src="{{URL::asset('admin/uploads/slider_logo/'.$slider->logo)}}">
+            <h5 style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$slider->id}}">{{$slider->title}}</h5>
           </div>
-          <div class="custom-box">
+          <?php }?>
+          <!-- <div class="custom-box">
             <img src="{{URL::asset('frontend/assets/img/skill-development.webp')}}">
             <h5 style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal-1">Skill development on
               scientific grounds</h5>
-          </div>
+          </div> -->
         </div>
 
       </div>
